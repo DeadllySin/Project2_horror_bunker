@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44939595, g: 0.4963137, b: 0.558729, a: 1}
+  m_IndirectSpecularColor: {r: 0.44939542, g: 0.4963132, b: 0.55872726, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -465,7 +465,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: Horizontal
   verticalInput: Vertical
-  movementSpeed: 10
+  movementSpeed: 5
+  dashSpeedTimeAtMaxSpeed: 3
+  dashSpeedTimeToMaxSpeed: 3
+  dashSpeedTimeToDrop: 1.5
+  dashSpeedIncrease: 0.3
+  dashSpeedMax: 8
+  dashSpeedDecrease: 0.15
+  dashKey: 32
 --- !u!143 &915758473
 CharacterController:
   m_ObjectHideFlags: 0
