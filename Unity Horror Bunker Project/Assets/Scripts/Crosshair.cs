@@ -12,12 +12,6 @@ public class Crosshair : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
     void OnGUI()
     {
         float xMin = (Screen.width / 2) - (crosshairImage.width / 2);
