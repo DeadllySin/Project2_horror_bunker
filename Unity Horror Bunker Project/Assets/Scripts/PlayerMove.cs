@@ -7,12 +7,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float dashSpeedTimeAtMaxSpeed;
-    [SerializeField] private float dashSpeedTimeToMaxSpeed;
-    [SerializeField] private float dashSpeedTimeToDrop;
-    [SerializeField] private float dashSpeedIncrease;
-    [SerializeField] private float dashSpeedMax;
-    [SerializeField] private float dashSpeedDecrease;
+    private float dashSpeedTimeAtMaxSpeed = 3.0f;
+    private float dashSpeedTimeToMaxSpeed = 3.0f;
+    private float dashSpeedTimeToDrop = 1.5f;
+    private float dashSpeedIncrease = 0.03f;
+    private float dashSpeedMax = 4.5f;
+    private float dashSpeedDecrease = 0.06f;
     [SerializeField] private KeyCode dashKey;
     
 
@@ -50,11 +50,15 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator DashSpeedChange()
     {
         movementSpeed += dashSpeedIncrease;
+        if (movementSpeed > dashSpeedMax)
+            movementSpeed = dashSpeedMax;
         yield return new WaitForSeconds(dashSpeedTimeToMaxSpeed);
         movementSpeed = dashSpeedMax;
         yield return new WaitForSeconds(dashSpeedTimeAtMaxSpeed);
         movementSpeed -= dashSpeedDecrease;
+        if (movementSpeed < 1.5f)
+            movementSpeed = 1.5f;
         yield return new WaitForSeconds(dashSpeedTimeToDrop);
-        movementSpeed = 5;
+        movementSpeed = 1.5f;
     }
 }
