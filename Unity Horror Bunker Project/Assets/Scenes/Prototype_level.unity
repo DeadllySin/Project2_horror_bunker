@@ -1189,32 +1189,32 @@ PrefabInstance:
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedTimeAtMaxSpeed
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedTimeToMaxSpeed
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedTimeToDrop
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedIncrease
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedMax
-      value: 0
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: dashSpeedDecrease
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632879, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
