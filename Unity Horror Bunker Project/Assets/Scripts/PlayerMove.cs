@@ -13,7 +13,6 @@ public class PlayerMove : MonoBehaviour
     private float dashSpeedIncrease = 0.03f;
     private float dashSpeedMax = 4.5f;
     private float dashSpeedDecrease = 0.06f;
-    [SerializeField] private KeyCode dashKey;
     
 
     private CharacterController charController;
@@ -25,14 +24,14 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         PlayerMovement();
     }
 
     private void PlayerMovement()
     {
-        if (Input.GetKey(dashKey))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             StartCoroutine(DashSpeedChange());
         }    
@@ -49,6 +48,8 @@ public class PlayerMove : MonoBehaviour
 
     private IEnumerator DashSpeedChange()
     {
+        // Please speedy fix the bug!
+
         movementSpeed += dashSpeedIncrease;
         if (movementSpeed > dashSpeedMax)
             movementSpeed = dashSpeedMax;

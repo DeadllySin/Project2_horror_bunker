@@ -6,11 +6,6 @@ public class Item : MonoBehaviour
 {
     [SerializeField] Transform player;
 
-    public void Start()
-    {
-        
-    }
-
     void OnMouseDown()
     {
         if ((transform.position - player.position).magnitude < 2)
