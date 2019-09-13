@@ -10,7 +10,7 @@ public class InteractWithKeypad : MonoBehaviour
     public bool doorOpen; //checks if the door is opened
     public bool keypadScreen;
     public Transform doorHinge;
-
+    [SerializeField] private GameObject button1, button2, button3, button4, button5, button6, button7, button8, button9, button0; // to be refactored with a loop
 
 
     void OnTriggerEnter(Collider other)
@@ -27,7 +27,11 @@ public class InteractWithKeypad : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            onClickedButton();
 
+        }
 
         if (input == curPassword)
         {
@@ -49,15 +53,12 @@ public class InteractWithKeypad : MonoBehaviour
             {
                 GUI.Box(new Rect(0, 0, 400, 50), "TIP: Press 'E' to open keypad"); //displays the "Tip" GUI to let the player know what to do
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    onClickedButton();
-                    onTrigger = false;
-                }
             }
 
         }
     }
+
+    
 
     void onClickedButton()
     {
@@ -66,10 +67,26 @@ public class InteractWithKeypad : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 2.0f))
         {
-            if (hit.transform != null)
-            {
-                //KeypadButton keypadButtonScript;
-                //input = keypadButtonScript.buttonNumber.ToString();
+            if (hit.transform != null) // to be refactored with switch statements and loops
+            { 
+                if (hit.transform.gameObject == button1)
+                    input += "1";
+                else if (hit.transform.gameObject == button2)
+                    input += "2";
+                else if (hit.transform.gameObject == button3)
+                    input += "3";
+                else if (hit.transform.gameObject == button4)
+                    input += "4";
+                else if (hit.transform.gameObject == button5)
+                    input += "5";
+                else if (hit.transform.gameObject == button6)
+                    input += "6";
+                else if (hit.transform.gameObject == button7)
+                    input += "7";
+                else if (hit.transform.gameObject == button8)
+                    input += "8";
+                else if (hit.transform.gameObject == button9)
+                    input += "9";
             }
         }
     }
