@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyPad : MonoBehaviour
+public class Keypad : MonoBehaviour
 {
 
     public string curPassword = "12345";
     public string input;
     public bool onTrigger; //checks if the player collides with the collider
     public bool doorOpen; //checks if the door is opened
-    public bool keypadScreen;
     public Transform doorHinge;
-
+    [SerializeField] private GameObject[] buttons;
+    [SerializeField] private GameObject EnterCodeButton;
+    [SerializeField] private GameObject CorrectCodeLight, ErrorCodeLight;
+    [SerializeField] private Material CorrectCodeLightOnMaterial, ErrorCodeLightOnMaterial;
+    [SerializeField] private TextMesh CodeText;
+    
 
 
     void OnTriggerEnter(Collider other)
@@ -21,25 +25,22 @@ public class KeyPad : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         onTrigger = false;
-        keypadScreen = false;
         input = "";
     }
 
     void Update()
     {
-
-        UpdateGui();
-
-
-        if (input == curPassword)
+        if (!doorOpen && Input.GetMouseButtonDown(0))        //fix enter text pressed bug
+            OnButtonClicked();
+        if (!doorOpen && Input.GetMouseButtonDown(0)) ;
         {
-            doorOpen = true;
-        }
+            OnEnterTextButton();
+        }      
 
         if (doorOpen)
         {
-            var newRot = Quaternion.RotateTowards(doorHinge.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 25);
-            doorHinge.rotation = newRot;
+                var newRot = Quaternion.RotateTowards(doorHinge.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 25);
+                doorHinge.rotation = newRot;
         }
     }
 
@@ -51,80 +52,72 @@ public class KeyPad : MonoBehaviour
             {
                 GUI.Box(new Rect(0, 0, 400, 50), "TIP: Press 'E' to open keypad"); //displays the "Tip" GUI to let the player know what to do
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    keypadScreen = true; 
-                    onTrigger = false;
-                }
-            }
-
-            if (keypadScreen) //displays the rectangle responsible for the keypad
-            {
-                GUI.Box(new Rect(0, 0, 640, 70), "");
-                GUI.Box(new Rect(10, 10, 620, 50), input);
-                GUI.Label(new Rect(10, 60, 200, 50), "'Esc' to exit");
-
-                if (Input.GetKeyDown(KeyCode.Escape)) //exits the rectangle
-                {
-                    keypadScreen = false;
-                }
-
+               
             }
         }
     }
 
-    void UpdateGui() //This function allows the player to enter a keycode.
+    void OnButtonClicked()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 2.0f))
         {
-            input = input + "0";
+            if (hit.transform != null)
+            { 
+                for (int i = 0; i < 11; i++)
+                {
+                    if (hit.transform.gameObject == buttons[i])
+                    {
+                        input += i.ToString();
+                        CodeText.GetComponent<TextMesh>().text = input;
+                        //play button pressed sound
+                    }
+                }
+            }
         }
+    }
 
-
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+    void OnEnterTextButton()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10.0f))
         {
-            input = input + "1";
-        }
+            if (hit.transform != null)
+            {
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            input = input + "2";
+                if (hit.transform.gameObject == EnterCodeButton)
+                {
+                    
+                    //play pressed button sound
+                    if (input == curPassword)
+                    {
+                        CorrectCodeLight.GetComponent<MeshRenderer>().material = CorrectCodeLightOnMaterial;
+                        StartCoroutine(DisplayAuthorizedText());
+                    }
+                    else if (input != curPassword)
+                    {
+                        ErrorCodeLight.GetComponent<MeshRenderer>().material = ErrorCodeLightOnMaterial;
+                        StartCoroutine(DisplayErrorText());
+                    }
+                }
+            }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            input = input + "3";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            input = input + "4";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
-        {
-            input = input + "5";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            input = input + "6";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7))
-        {
-            input = input + "7";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8))
-        {
-            input = input + "8";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            input = input + "9";
-        }
-
+    IEnumerator DisplayErrorText()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CodeText.GetComponent<TextMesh>().text = "DENIED";
+        //play error sound
+    }
+    
+    IEnumerator DisplayAuthorizedText()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CodeText.GetComponent<TextMesh>().text = "AUTHORIZED";
+        doorOpen = true;
+        //play authorized sound
     }
 }
