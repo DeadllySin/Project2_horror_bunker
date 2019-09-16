@@ -32,10 +32,10 @@ public class Keypad : MonoBehaviour
     {
         if (!doorOpen && Input.GetMouseButtonDown(0))        //fix enter text pressed bug
             OnButtonClicked();
-        if (!doorOpen && Input.GetMouseButtonDown(0)) ;
-        {
+        //if (!doorOpen && Input.GetMouseButtonDown(0)) 
+        //{
             OnEnterTextButton();
-        }      
+        //}      
 
         if (doorOpen)
         {
