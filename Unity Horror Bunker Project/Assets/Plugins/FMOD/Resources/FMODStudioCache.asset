@@ -100,6 +100,26 @@ MonoBehaviour:
   - Name: 
     Value: 688
   Exists: 0
+--- !u!114 &-7051348781814741426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Pogoy\OneDrive\Documents\GitHub\Project2_horror_bunker\FMOD Builds\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637033620469954088
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 19712
+  Exists: 1
 --- !u!114 &-6199045244284407817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +141,49 @@ MonoBehaviour:
   - Name: 
     Value: 19712
   Exists: 1
+--- !u!114 &-5512171156978037942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Pogoy\OneDrive\Documents\GitHub\Project2_horror_bunker\FMOD Builds\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637033620469961650
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 730
+  Exists: 1
+--- !u!114 &-4959178859213517570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  guid: 36c4a2e2bc1fea409ee544a1d78154ee
+  Banks:
+  - {fileID: -7051348781814741426}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &-4475784766592379935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,16 +260,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 7368782778845182261}
-  - {fileID: -6199045244284407817}
+  - {fileID: -5512171156978037942}
+  - {fileID: -7051348781814741426}
   EditorEvents:
-  - {fileID: 9135607792921143531}
+  - {fileID: -4959178859213517570}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -6199045244284407817}
+  - {fileID: -7051348781814741426}
   StringsBanks:
-  - {fileID: 7368782778845182261}
-  stringsBankWriteTime: 637032342624099807
+  - {fileID: -5512171156978037942}
+  stringsBankWriteTime: 637033620469961650
   cacheVersion: 3
 --- !u!114 &398396186928433120
 MonoBehaviour:

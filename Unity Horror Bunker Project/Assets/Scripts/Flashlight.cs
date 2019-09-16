@@ -9,7 +9,9 @@ public class Flashlight : MonoBehaviour
     public Text BatteryPack;
     public static Flashlight Instance;
     public GameObject flashlight;
-    public GameObject LightObj;
+    private Light _light;
+    public float maxLight, lowLight, currentLight;
+    public float lightSpeed;
     private float maxBattery;
     public int packBattery;
     private int maxPackBattery;
@@ -17,10 +19,17 @@ public class Flashlight : MonoBehaviour
     public float addBattery;
     private float decreaseBattery;
     public bool flashlightEnabled;
-   
+
+     void Awake()
+    {
+        _light = GetComponentInChildren<Light>();
+    }
 
     public void Start()
     {
+        maxLight = 3.5f;
+        lowLight = 0.2f;
+        lightSpeed = 1f;
         Instance = this;
         addBattery = 100;
         currentBattery = 0;
@@ -70,13 +79,17 @@ public class Flashlight : MonoBehaviour
 
             if (currentBattery <= 0)
             {
-                LightObj.SetActive(false);
+                _light.intensity = lowLight;
                 currentBattery = 0;
             }
-            if (currentBattery > 0)
+            if (currentBattery > 0 && Input.GetMouseButton(1))
             {
-                LightObj.SetActive(true);
                 currentBattery -= decreaseBattery * Time.deltaTime;
+                _light.intensity = Mathf.Lerp(maxLight, lowLight, Mathf.PingPong(Time.time, lightSpeed));
+            }
+            else
+            {
+                _light.intensity = lowLight;
             }
 
         }
