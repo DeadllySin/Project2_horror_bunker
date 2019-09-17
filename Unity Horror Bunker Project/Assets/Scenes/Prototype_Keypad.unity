@@ -504,7 +504,7 @@ MonoBehaviour:
   input: 
   onTrigger: 0
   doorOpen: 0
-  doorHinge: {fileID: 0}
+  doorHinge: {fileID: 1093339080}
   buttons:
   - {fileID: 565163875}
   - {fileID: 841082196}
