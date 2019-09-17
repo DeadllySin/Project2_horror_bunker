@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8690922337659496843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  guid: 36c4a2e2bc1fea409ee544a1d78154ee
+  Banks:
+  - {fileID: -1030046362648456739}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &-8435128259654669173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +270,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
+--- !u!114 &-1030046362648456739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\FMOD
+    Builds\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637032342624069564
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 19712
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,16 +304,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -5512171156978037942}
-  - {fileID: -7051348781814741426}
+  - {fileID: 2898964844543588534}
+  - {fileID: -1030046362648456739}
   EditorEvents:
-  - {fileID: -4959178859213517570}
+  - {fileID: -8690922337659496843}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7051348781814741426}
+  - {fileID: -1030046362648456739}
   StringsBanks:
-  - {fileID: -5512171156978037942}
-  stringsBankWriteTime: 637033620469961650
+  - {fileID: 2898964844543588534}
+  stringsBankWriteTime: 637032342624099807
   cacheVersion: 3
 --- !u!114 &398396186928433120
 MonoBehaviour:
@@ -330,6 +374,27 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 1000
+  Exists: 1
+--- !u!114 &2898964844543588534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\FMOD
+    Builds\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637032342624099807
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 730
   Exists: 1
 --- !u!114 &3652806997688099494
 MonoBehaviour:
