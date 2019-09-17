@@ -14,7 +14,7 @@ public class Keypad : MonoBehaviour
     [SerializeField] private GameObject CorrectCodeLight, ErrorCodeLight;
     [SerializeField] private Material CorrectCodeLightOnMaterial, ErrorCodeLightOnMaterial;
     [SerializeField] private TextMesh CodeText;
-    
+
 
 
     void OnTriggerEnter(Collider other)
@@ -32,15 +32,15 @@ public class Keypad : MonoBehaviour
     {
         if (!doorOpen && Input.GetMouseButtonDown(0))        //fix enter text pressed bug
             OnButtonClicked();
-        if (!doorOpen && Input.GetMouseButtonDown(0)) ;
-        {
-            OnEnterTextButton();
-        }      
+        //if (!doorOpen && Input.GetMouseButtonDown(0)) 
+        //{
+        OnEnterTextButton();
+        //}      
 
         if (doorOpen)
         {
-                var newRot = Quaternion.RotateTowards(doorHinge.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 25);
-                doorHinge.rotation = newRot;
+            var newRot = Quaternion.RotateTowards(doorHinge.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 25);
+            doorHinge.rotation = newRot;
         }
     }
 
@@ -52,7 +52,7 @@ public class Keypad : MonoBehaviour
             {
                 GUI.Box(new Rect(0, 0, 400, 50), "TIP: Press 'E' to open keypad"); //displays the "Tip" GUI to let the player know what to do
 
-               
+
             }
         }
     }
@@ -64,8 +64,8 @@ public class Keypad : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 2.0f))
         {
             if (hit.transform != null)
-            { 
-                for (int i = 0; i < 11; i++)
+            {
+                for (int i = 0; i < 10; i++)
                 {
                     if (hit.transform.gameObject == buttons[i])
                     {
@@ -89,7 +89,7 @@ public class Keypad : MonoBehaviour
 
                 if (hit.transform.gameObject == EnterCodeButton)
                 {
-                    
+
                     //play pressed button sound
                     if (input == curPassword)
                     {
@@ -110,9 +110,12 @@ public class Keypad : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         CodeText.GetComponent<TextMesh>().text = "DENIED";
+        input = "";
+        yield return new WaitForSeconds(1f);
+        CodeText.GetComponent<TextMesh>().text = input;
         //play error sound
     }
-    
+
     IEnumerator DisplayAuthorizedText()
     {
         yield return new WaitForSeconds(0.5f);
