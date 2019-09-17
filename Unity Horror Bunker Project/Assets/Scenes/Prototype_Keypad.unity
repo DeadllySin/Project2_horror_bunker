@@ -197,7 +197,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &110802178
 GameObject:
@@ -359,7 +360,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &155113064
 GameObject:
@@ -896,7 +898,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &565163875 stripped
 GameObject:
@@ -987,7 +990,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1001 &680135229
 PrefabInstance:
@@ -1066,7 +1070,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &696722331
 GameObject:
@@ -1642,7 +1647,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d7154e4f80dbf6d4785adf769dd9d59a, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &1432600714 stripped
 GameObject:
@@ -1768,7 +1774,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &1539267046
 GameObject:
@@ -2170,7 +2177,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1001 &1803199207
 PrefabInstance:
@@ -2249,7 +2257,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!4 &1902598607 stripped
 Transform:
@@ -2430,7 +2439,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
 --- !u!1 &2128725470 stripped
 GameObject:
@@ -2515,5 +2525,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4504979236029716280, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7876ed453c736e64e90285a9f02e0ab6, type: 3}

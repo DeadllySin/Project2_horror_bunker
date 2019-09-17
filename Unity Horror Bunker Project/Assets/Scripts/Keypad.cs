@@ -110,6 +110,9 @@ public class Keypad : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         CodeText.GetComponent<TextMesh>().text = "DENIED";
+        input = "";
+        yield return new WaitForSeconds(1f);
+        CodeText.GetComponent<TextMesh>().text = input;
         //play error sound
     }
 
