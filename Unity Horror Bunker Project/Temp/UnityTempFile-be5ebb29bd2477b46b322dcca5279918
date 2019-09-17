@@ -1,6 +1,6 @@
 /target:library
 /nowarn:0169
-/out:Temp/Assembly-CSharp.dll
+/out:Temp/Unity.TextMeshPro.dll
 /debug:portable
 /optimize-
 /nostdlib+
@@ -66,22 +66,20 @@
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/Managed/UnityEditor.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/Managed/Unity.Locator.dll"
-/reference:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.dll
-/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
-/reference:Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
-/reference:Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
-/reference:"C:/Users/Admin/Documents/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll"
-/reference:"C:/Users/Admin/Documents/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll"
-/reference:"C:/Users/Admin/Documents/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
+/reference:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll"
+/reference:"D:/Users/DeadllySin/Documents/Escolinha/GitHub/Project2_horror_bunker/Unity Horror Bunker Project/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/Microsoft.Win32.Primitives.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2019.1.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.AppContext.dll"
@@ -300,12 +298,59 @@
 /define:ENABLE_VSTU
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-Assets\Scripts\Crosshair.cs
-Assets\Scripts\Door.cs
-Assets\Scripts\Drag.cs
-Assets\Scripts\Flashlight.cs
-Assets\Scripts\HeadBob.cs
-Assets\Scripts\Item.cs
-Assets\Scripts\Keypad.cs
-Assets\Scripts\PlayerLook.cs
-Assets\Scripts\PlayerMove.cs
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\AssemblyInfo.cs.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\FastAction.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\MaterialReferenceManager.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextContainer.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextMeshPro.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextMeshProUGUI.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Asset.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Character.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_CharacterInfo.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ColorGradient.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_CoroutineTween.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_DefaultControls.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Dropdown.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_EditorResourceManager.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAsset.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAssetCommon.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAssetUtilities.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontFeaturesCommon.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontFeatureTable.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_InputField.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_InputValidator.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_LineInfo.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ListPool.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_MaterialManager.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_MeshInfo.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ObjectPool.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_PackageResourceImporter.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_RichTextTagsCommon.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_RichTextTagStack.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ScrollbarEventHandler.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SelectionCaret.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Settings.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ShaderUtilities.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Sprite.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAnimator.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAsset.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAssetImportFormats.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteCharacter.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteGlyph.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Style.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_StyleSheet.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SubMesh.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SubMeshUI.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Text.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextElement.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextElement_Legacy.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextInfo.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextParsingUtilities.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextUtilities.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_UpdateManager.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_UpdateRegistery.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_EventManager.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_ExtensionMethods.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_MeshUtilities.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_Private.cs"
+"D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\Unity Horror Bunker Project\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_UGUI_Private.cs"
