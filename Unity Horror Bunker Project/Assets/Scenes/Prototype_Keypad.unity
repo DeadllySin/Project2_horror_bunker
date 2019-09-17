@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 169373062}
   - component: {fileID: 169373061}
   - component: {fileID: 169373063}
+  - component: {fileID: 169373064}
   m_Layer: 0
   m_Name: KeypadCollider
   m_TagString: Untagged
@@ -501,7 +502,7 @@ MonoBehaviour:
   input: 
   onTrigger: 0
   doorOpen: 0
-  doorHinge: {fileID: 1093339080}
+  doorHinge: {fileID: 0}
   buttons:
   - {fileID: 565163875}
   - {fileID: 841082196}
@@ -535,6 +536,30 @@ BoxCollider:
   m_Size: {x: 4, y: 4, z: 4}
   m_Center: {x: -0.01099062, y: -1.1856244, z: -1.5213894}
 --- !u!114 &169373063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169373059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cc1c7cf23f29d4693eae6abe9e83f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curPassword: 12345
+  input: 
+  onTrigger: 0
+  doorOpen: 0
+  doorHinge: {fileID: 0}
+  buttons: []
+  EnterCodeButton: {fileID: 0}
+  CorrectCodeLight: {fileID: 0}
+  ErrorCodeLight: {fileID: 0}
+  CorrectCodeLightOnMaterial: {fileID: 0}
+  ErrorCodeLightOnMaterial: {fileID: 0}
+  CodeText: {fileID: 0}
+--- !u!114 &169373064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
