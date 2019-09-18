@@ -32,10 +32,9 @@ public class Keypad : MonoBehaviour
     {
         if (!doorOpen && Input.GetMouseButtonDown(0))        //fix enter text pressed bug
             OnButtonClicked();
-        //if (!doorOpen && Input.GetMouseButtonDown(0)) 
-        //{
-        OnEnterTextButton();
-        //}      
+        if (!doorOpen) 
+            OnEnterTextButton();
+            
 
         if (doorOpen)
         {
@@ -91,12 +90,12 @@ public class Keypad : MonoBehaviour
                 {
 
                     //play pressed button sound
-                    if (input == curPassword)
+                    if (input == curPassword && Input.GetMouseButtonDown(0))
                     {
                         CorrectCodeLight.GetComponent<MeshRenderer>().material = CorrectCodeLightOnMaterial;
                         StartCoroutine(DisplayAuthorizedText());
                     }
-                    else if (input != curPassword)
+                    else if (input != curPassword && Input.GetMouseButtonDown(0))
                     {
                         ErrorCodeLight.GetComponent<MeshRenderer>().material = ErrorCodeLightOnMaterial;
                         StartCoroutine(DisplayErrorText());
