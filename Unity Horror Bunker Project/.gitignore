@@ -1,0 +1,85 @@
+
+Unity Horror Bunker Project/Temp/UnityLockfile
+/Unity Horror Bunker Project/Library/EditorInstance.json
+Unity Horror Bunker Project/Library/CurrentLayout.dwlt
+# 3rd party files
+#
+
+# wwise intermediate files
+**/.cache/
+*.akd
+
+Project/Library/metadata/
+Project/Library/PackageCache/
+Project/Library/ShaderCache/
+Project/Library/StateCache/
+Project/Temp/
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
+*.log
+
+#maya intermediate files
+**/incrementalSave/
+
+# Unity generated
+#
+Temp/**
+Obj/**
+UnityGenerated/**
+Library/**
+build_ios/**
+build_android/**
+build_html5/**
+build_win/**
+project_android/**
+Lightmap-*.exr
+Lightmap-*.png
+ReflectionProbe*.exr
+ReflectionProbe*.png
+
+# Ignore: name DOT meta
+*.meta
+# Include: name DOT extension DOT meta
+!*.*.meta
+
+# Visual Studio / MonoDevelop generated
+#
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+
+# OS generated
+#
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Local/*
+
+# Rider
+.idea
+JetBrains
+JetBrains.meta
+
+
+# misc
+#
+# Ignore: name DOT meta
+*.meta
+
+# Include: name DOT extension DOT meta
+!*.*.meta
+/Builds
+/.vs/gtmk2019-onelight/v15/Server/sqlite3
