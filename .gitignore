@@ -83,3 +83,5 @@ JetBrains.meta
 !*.*.meta
 /Builds
 /.vs/gtmk2019-onelight/v15/Server/sqlite3
+*.log
+Unity Horror Bunker Project/Library/assetDatabase3
