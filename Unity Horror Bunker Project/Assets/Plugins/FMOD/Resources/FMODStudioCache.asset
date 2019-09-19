@@ -19,7 +19,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -6204433951025172914}
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
@@ -142,6 +143,23 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 19712
+  Exists: 1
+--- !u!114 &-6204433951025172914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Test/Flashlight
+  m_EditorClassIdentifier: 
+  Name: Flashlight
+  Min: 0
+  Max: 100
+  Default: 0
   Exists: 1
 --- !u!114 &-6199045244284407817
 MonoBehaviour:
@@ -285,11 +303,11 @@ MonoBehaviour:
   Path: D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\FMOD
     Builds\Desktop\Master.bank
   SubDir: 
-  lastModified: 637032342624069564
+  lastModified: 637044029974136830
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 19712
+    Value: 20288
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -313,7 +331,7 @@ MonoBehaviour:
   - {fileID: -1030046362648456739}
   StringsBanks:
   - {fileID: 2898964844543588534}
-  stringsBankWriteTime: 637032342624099807
+  stringsBankWriteTime: 637044029974211687
   cacheVersion: 3
 --- !u!114 &398396186928433120
 MonoBehaviour:
@@ -390,11 +408,11 @@ MonoBehaviour:
   Path: D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\FMOD
     Builds\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 637032342624099807
+  lastModified: 637044029974211687
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 730
+    Value: 782
   Exists: 1
 --- !u!114 &3652806997688099494
 MonoBehaviour:
