@@ -7,14 +7,17 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float dashCooldownTime;
     private float dashSpeedTimeAtMaxSpeed = 3.0f;
     private float dashSpeedTimeToMaxSpeed = 3.0f;
     private float dashSpeedTimeToDrop = 1.5f;
     private float dashSpeedIncrease = 0.03f;
     private float dashSpeedMax = 4.5f;
     private float dashSpeedDecrease = 0.06f;
+    private bool isDashOn = false;
     private bool isSpeedGoingUp = false; // don't refactor
     private KeyCode dashKey = KeyCode.LeftShift; // don't refactor
+    
 
     private CharacterController charController;
 
@@ -32,7 +35,7 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerMovement()
     {
-        if (Input.GetKey(dashKey) && isSpeedGoingUp == false)
+        if (Input.GetKey(dashKey) && isSpeedGoingUp == false && isDashOn == false)
         {
             StartCoroutine(DashSpeedChange());
         }    
@@ -48,8 +51,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     private IEnumerator DashSpeedChange()
-    {
-        // Please speedy fix the bug!
+    { 
         isSpeedGoingUp = true;
         movementSpeed += dashSpeedIncrease;
         if (movementSpeed > dashSpeedMax)
@@ -63,5 +65,13 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(dashSpeedTimeToDrop);
         movementSpeed = 1.5f;
         isSpeedGoingUp = false;
+        StartCoroutine(DashCooldown());
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        isDashOn = true;
+        yield return new WaitForSeconds(dashCooldownTime);
+        isDashOn = false;
     }
 }

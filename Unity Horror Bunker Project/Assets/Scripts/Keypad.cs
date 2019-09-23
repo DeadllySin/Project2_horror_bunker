@@ -119,6 +119,8 @@ public class Keypad : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         CodeText.GetComponent<TextMesh>().text = "AUTHORIZED";
+        yield return new WaitForSeconds(1f);
+        CodeText.GetComponent<TextMesh>().text = "";
         doorOpen = true;
         //play authorized sound
     }
