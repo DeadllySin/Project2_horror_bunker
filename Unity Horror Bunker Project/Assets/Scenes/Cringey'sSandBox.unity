@@ -951,7 +951,22 @@ PrefabInstance:
     - target: {fileID: 7534829682539287295, guid: 2877e3d1ce094d1468a47d5c30dd5919,
         type: 3}
       propertyPath: rotationSpeed
-      value: 30
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534829682539287295, guid: 2877e3d1ce094d1468a47d5c30dd5919,
+        type: 3}
+      propertyPath: closingRotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534829682539287295, guid: 2877e3d1ce094d1468a47d5c30dd5919,
+        type: 3}
+      propertyPath: timerToStartClosing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534829682539287295, guid: 2877e3d1ce094d1468a47d5c30dd5919,
+        type: 3}
+      propertyPath: rotationMultiplier
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2877e3d1ce094d1468a47d5c30dd5919, type: 3}
