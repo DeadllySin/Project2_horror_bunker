@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Protoype_Notes.unity
+- path: Assets/Scenes/Cringey'sSandBox.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
