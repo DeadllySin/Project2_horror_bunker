@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: 
   SourceProjectPathUnformatted: 
-  SourceBankPathUnformatted: 
+  SourceBankPathUnformatted: D:\Users\DeadllySin\Documents\Escolinha\GitHub\Project2_horror_bunker\FMOD
+    Builds\Desktop
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -74,7 +75,8 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
