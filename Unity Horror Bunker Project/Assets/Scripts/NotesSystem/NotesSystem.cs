@@ -39,6 +39,12 @@ public struct UIElements
 
 public class NotesSystem : MonoBehaviour
 {
+    #region Data and Actions
+    [SerializeField] UIElements UI = new UIElements();
+
+    private Action<Note> A_Display = delegate { };
+
+    #endregion
 
     #region Privates and Properties
     private Note activeNote = null;
@@ -59,19 +65,20 @@ public class NotesSystem : MonoBehaviour
     #region Unity's default methods
     private void OnEnable()
     {
-
+        A_Display += DisplayNote;
     }
     private void OnDisable()
     {
-
+        A_Display -= DisplayNote;
     }
     private void Start()
     {
+        Close();
 
+        defaultPageTexture = UI.Page.sprite;
     }
     private void Update()
     {
-
     }
     #endregion
 
@@ -88,6 +95,8 @@ public class NotesSystem : MonoBehaviour
         //enable character controller
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
+
+        CloseNote();
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
     }
 
@@ -103,6 +112,13 @@ public class NotesSystem : MonoBehaviour
     {
         UI.ReadButton.interactable = activeNote.Pages[page].Type == PageType.Texture;
 
+        if (activeNote.Pages[page].Type != PageType.Texture)
+            readSubscript = false;
+        else
+            if (readSubscript == true)
+                UpdateSubscript();
+
+
         switch (activeNote.Pages[page].Type)
         {
             case PageType.Text:
@@ -117,6 +133,12 @@ public class NotesSystem : MonoBehaviour
         UpdateUI();
     }
 
+    public void CloseNote()
+    {
+        UpdateCanvasGroup(false, UI.NoteCanvasGroup);
+        OnNoteClose();
+    }
+
     private void UpdateUI()
     {
         UI.PreviousButton.interactable = !(currentPage == 0);
@@ -125,6 +147,33 @@ public class NotesSystem : MonoBehaviour
         var useSubscript = ActivePage.Type == PageType.Texture && ActivePage.UseSubscript;
         UI.ReadButton.alpha = useSubscript ? (readSubscript ? .5f : 1f) : 0f;
         UpdateCanvasGroup(readSubscript, UI.SubscriptGroup);
+    }
+
+    private void UpdateSubscript()
+    {
+        UI.SubscriptText.text = readSubscript ? ActivePage.Text : string.Empty;
+    }
+
+    public void Next()
+    {
+        currentPage++;
+
+        DisplayPage(currentPage);
+    }
+
+    public void Previous()
+    {
+        currentPage--;
+
+        DisplayPage(currentPage);
+    }
+
+    public void Read()
+    {
+        readSubscript = !readSubscript;
+
+        UpdateSubscript();
+        UpdateUI();
     }
 
     private void UpdateCanvasGroup(bool state, CanvasGroup canvasGroup)
@@ -142,5 +191,12 @@ public class NotesSystem : MonoBehaviour
                 canvasGroup.interactable = false;
                 break;
         }
+    }
+
+    private void OnNoteClose()
+    {
+        activeNote = null;
+        currentPage = 0;
+        readSubscript = false;
     }
 }
