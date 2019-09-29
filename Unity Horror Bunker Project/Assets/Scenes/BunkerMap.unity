@@ -751,7 +751,7 @@ MonoBehaviour:
   horizontalInput: Horizontal
   verticalInput: Vertical
   movementSpeed: 1.5
-  dashCooldownTime: 0
+  dashCooldownTime: 10
 --- !u!143 &1835871191
 CharacterController:
   m_ObjectHideFlags: 0

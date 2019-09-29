@@ -12,10 +12,8 @@ public class Keypad : MonoBehaviour
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject EnterCodeButton;
     [SerializeField] private GameObject CorrectCodeLight, ErrorCodeLight;
-    [SerializeField] private Material CorrectCodeLightOnMaterial, ErrorCodeLightOnMaterial;
+    [SerializeField] private Material CorrectCodeLightOnMaterial, ErrorCodeLightOnMaterial, ErrorCodeLightOffMaterial;
     [SerializeField] private TextMesh CodeText;
-
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -43,18 +41,16 @@ public class Keypad : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    /*void OnGUI()
     {
         if (!doorOpen)
         {
             if (onTrigger)
             {
-                GUI.Box(new Rect(0, 0, 400, 50), "TIP: Press 'E' to open keypad"); //displays the "Tip" GUI to let the player know what to do
-
-
+                GUI.Box(new Rect(0, 0, 720, 640), "TIP: Press 'E' to open keypad"); //displays the "Tip" GUI to let the player know what to do
             }
         }
-    }
+    } */
 
     void OnButtonClicked()
     {
@@ -112,6 +108,7 @@ public class Keypad : MonoBehaviour
         input = "";
         yield return new WaitForSeconds(1f);
         CodeText.GetComponent<TextMesh>().text = input;
+        ErrorCodeLight.GetComponent<MeshRenderer>().material = ErrorCodeLightOffMaterial;
         //play error sound
     }
 

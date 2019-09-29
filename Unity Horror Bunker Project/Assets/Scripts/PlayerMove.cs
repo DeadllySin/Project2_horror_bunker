@@ -7,8 +7,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float dashCooldownTime;
-    private float dashSpeedTimeAtMaxSpeed = 3.0f;
+    [SerializeField] private float dashCooldownTime = 10.0f;
+    private float dashSpeedTimeAtMaxSpeed = 1.5f;
     private float dashSpeedTimeToMaxSpeed = 3.0f;
     private float dashSpeedTimeToDrop = 1.5f;
     private float dashSpeedIncrease = 0.03f;
@@ -38,16 +38,16 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(dashKey) && isSpeedGoingUp == false && isDashOn == false)
         {
             StartCoroutine(DashSpeedChange());
-        }    
+        }
 
-        
-        float horizInput = Input.GetAxis(horizontalInput) * movementSpeed;
-        float vertInput = Input.GetAxis(verticalInput) * movementSpeed;
+
+        float horizInput = Input.GetAxis(horizontalInput);
+        float vertInput = Input.GetAxis(verticalInput);
 
         Vector3 forwardMovement = transform.forward * vertInput;
         Vector3 rightMovement = transform.right * horizInput;
 
-        charController.SimpleMove(forwardMovement + rightMovement);
+        charController.SimpleMove(Vector3.ClampMagnitude(forwardMovement + rightMovement, 1.0f) * movementSpeed);
     }
 
     private IEnumerator DashSpeedChange()
