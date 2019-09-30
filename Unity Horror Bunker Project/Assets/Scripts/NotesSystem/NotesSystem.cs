@@ -42,7 +42,7 @@ public class NotesSystem : MonoBehaviour
     #region Data and Actions
     [SerializeField] UIElements UI = new UIElements();
 
-    private Action<Note> A_Display = delegate { };
+    private static Action<Note> A_Display = delegate { };
 
     #endregion
 
@@ -84,24 +84,45 @@ public class NotesSystem : MonoBehaviour
 
     public void Open()
     {
+        SwitchGameControls(false);
         //disable character controller
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
 
+        
+        UpdateCanvasGroup(true, UI.NoteCanvasGroup);
     }
 
     public void Close()
     {
+        SwitchGameControls(true);
         //enable character controller
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
+        
 
         CloseNote();
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
     }
 
-    private void DisplayNote(Note note)
+    private void SwitchGameControls(bool state)
     {
+        switch (state)
+        {
+            case true:
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                break;
+
+            case false:
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                break;
+        }
+    }
+
+    public void DisplayNote(Note note)
+    {
+        if (note == null) { return; }
+
+        SwitchGameControls(false);
+
         UpdateCanvasGroup(true, UI.NoteCanvasGroup);
         activeNote = note;
 
@@ -131,6 +152,11 @@ public class NotesSystem : MonoBehaviour
                 break;
         }
         UpdateUI();
+    }
+
+    public static void Display (Note note)
+    {
+        A_Display(note);
     }
 
     public void CloseNote()

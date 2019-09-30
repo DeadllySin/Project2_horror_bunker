@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Note", menuName = "Notes system/new Note")]
-public class Note : MonoBehaviour
+public class Note : ScriptableObject
 {
     [SerializeField] string label = string.Empty;
     public string Label { get { return label; } }

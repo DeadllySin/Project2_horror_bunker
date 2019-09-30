@@ -13,7 +13,7 @@ public class RaycastData : ScriptableObject
         HitTransform = _hit.Value.transform;
         Hit = _hit;
 
-        Debug.Log(HitTransform.name);
+        
     }
 
     public bool IsThisNewObject(Transform transform)

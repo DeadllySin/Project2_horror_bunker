@@ -9,7 +9,7 @@ public class InteractionSystem : MonoBehaviour
 
     [SerializeField] private Transform viewCamera = null;
 
-    [SerializeField] private float interactionDistance = 5;
+    [SerializeField] private float interactionDistance = 5f;
     [SerializeField] private LayerMask layersToRaycast = 0;
 
     void Start()
@@ -20,7 +20,19 @@ public class InteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount % 4 == 0)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+             if (data.HitTransform)
+            {
+                var component = data.HitTransform.GetComponent<IInteractable>();
+                if (component != null)
+                {
+                    component.Interact();
+                }
+            }
+        }
+
+        if (Time.frameCount % 6 == 0)
         {
             RaycastHit? hit = DoRaycasting();
 
