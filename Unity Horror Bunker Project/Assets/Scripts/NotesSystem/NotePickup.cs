@@ -6,8 +6,8 @@ public class NotePickup : MonoBehaviour, IInteractable
 {
     [SerializeField] Note note = null;
 
-    [SerializeField] bool autoDisplay = false;
-    
+    [SerializeField] bool autoDisplay = true;
+
     public void Interact()
     {
         if (autoDisplay)
@@ -15,5 +15,4 @@ public class NotePickup : MonoBehaviour, IInteractable
             NotesSystem.Display(note);
         }
     }
-
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- [CreateAssetMenu(fileName = "RaycastData", menuName = "Game/new RaycastData")]
 public class InteractionSystem : MonoBehaviour
 {
     [SerializeField] private RaycastData data = null;

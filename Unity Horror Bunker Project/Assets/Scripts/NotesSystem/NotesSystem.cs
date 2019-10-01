@@ -82,37 +82,34 @@ public class NotesSystem : MonoBehaviour
     }
     #endregion
 
+    #region UI update methods
+
     public void Open()
     {
-        SwitchGameControls(false);
-        //disable character controller
-
-        
+        //disable character controller       
         UpdateCanvasGroup(true, UI.NoteCanvasGroup);
     }
 
     public void Close()
     {
-        SwitchGameControls(true);
+        SwitchGameControls(false);
         //enable character controller
-        
-
         CloseNote();
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
     }
 
-    private void SwitchGameControls(bool state)
+    public void SwitchGameControls(bool state)
     {
         switch (state)
         {
             case true:
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 break;
 
             case false:
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
     }
@@ -121,7 +118,7 @@ public class NotesSystem : MonoBehaviour
     {
         if (note == null) { return; }
 
-        SwitchGameControls(false);
+        SwitchGameControls(true);
 
         UpdateCanvasGroup(true, UI.NoteCanvasGroup);
         activeNote = note;
@@ -138,7 +135,6 @@ public class NotesSystem : MonoBehaviour
         else
             if (readSubscript == true)
                 UpdateSubscript();
-
 
         switch (activeNote.Pages[page].Type)
         {
@@ -161,6 +157,7 @@ public class NotesSystem : MonoBehaviour
 
     public void CloseNote()
     {
+        SwitchGameControls(false);
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
         OnNoteClose();
     }
@@ -225,4 +222,6 @@ public class NotesSystem : MonoBehaviour
         currentPage = 0;
         readSubscript = false;
     }
+
+    #endregion
 }
