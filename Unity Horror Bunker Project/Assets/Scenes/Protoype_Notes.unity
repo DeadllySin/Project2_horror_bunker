@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   note: {fileID: 11400000, guid: 53bb3166047821c4a93fc0038c947df8, type: 2}
-  autoDisplay: 0
+  autoDisplay: 1
 --- !u!65 &664800966
 BoxCollider:
   m_ObjectHideFlags: 0
