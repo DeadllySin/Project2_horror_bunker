@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class Flashlight : MonoBehaviour
 {
+
     public Slider BatterySlider;
     public Text BatteryPack;
     public static Flashlight Instance;
     public GameObject flashlight;
     private Light _light;
-    public float maxLight, lowLight, currentLight;
-    public float lightSpeed;
-    private float maxBattery;
+    public float currentLight;
     public int packBattery;
     private int maxPackBattery;
     public float currentBattery;
-    public float addBattery;
-    private float decreaseBattery;
-    public bool flashlightEnabled;
+    private float increaseBattery, decreaseBattery;
+    private bool flashlightEnabled;
+    private bool internalLight;
+    private bool internalLightActivated;
+    private bool externalLight;
+    private bool externalLightActivated;
 
      void Awake()
     {
@@ -27,17 +29,17 @@ public class Flashlight : MonoBehaviour
 
     public void Start()
     {
-        maxLight = 3.5f;
-        lowLight = 0.2f;
-        lightSpeed = 1f;
         Instance = this;
-        addBattery = 100;
-        currentBattery = 0;
+        currentBattery = 0f;
         packBattery = 0;
         maxPackBattery = 5;
-        maxBattery = 100;
-        decreaseBattery = 1f;
-        BatterySlider.maxValue = maxBattery;
+
+        // Energy battery regen
+        decreaseBattery = 4.5f;
+        increaseBattery = 15f;
+
+        // Battery Slide UI 
+        BatterySlider.maxValue = 100.0f;
         currentBattery = Mathf.Clamp(currentBattery, 0, 100);
 
         UpdateUI();
@@ -46,50 +48,81 @@ public class Flashlight : MonoBehaviour
     public void Update()
     {
         UpdateUI();
+        currentLight = _light.intensity;
 
         //Equip
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             flashlightEnabled =! flashlightEnabled;
-        }
-
-        //Reload battery
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (packBattery > 0)
-            {
-                packBattery -= 1;
-                currentBattery += addBattery;
-            }
-            if (packBattery <= 0)
-            {
-                packBattery = 0;
-                Debug.Log("You have no more batteries!");
-            }
-        }
-
-        if (currentBattery > maxBattery)
-        {
-            currentBattery = maxBattery;
         }
 
         if (flashlightEnabled)
         {
             flashlight.SetActive(true);
-
-            if (currentBattery <= 0)
+        
+            //Reload add-on external battery
+            if (Input.GetKeyDown(KeyCode.R) && packBattery > 0)
             {
-                _light.intensity = lowLight;
-                currentBattery = 0;
+                currentBattery += 100f;
+                packBattery -= 1;
+               
+                // value constraints
+                if (packBattery < 0)
+                {
+                    packBattery = 0;
+                }
+                if (packBattery > 5)
+                {
+                    packBattery = 5;
+                }
+                if (currentBattery > 100)
+                {
+                    currentBattery = 100f;
+                }
+              
             }
-            if (currentBattery > 0 && Input.GetMouseButton(1))
+         
+
+            // Activate Internal battery
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                currentBattery -= decreaseBattery * Time.deltaTime;
-                _light.intensity = Mathf.Lerp(maxLight, lowLight, Mathf.PingPong(Time.time, lightSpeed));
+                internalLight =! internalLight;
+            }
+
+            if (internalLight)
+            {
+                _light.intensity = 3.5f;
+                decreaseBattery = 12.5f;
+                internalLightActivated = true;
             }
             else
             {
-                _light.intensity = lowLight;
+                _light.intensity = 0.5f;
+                decreaseBattery = 4.5f;
+                internalLightActivated = false;
+            }
+           
+
+            // Hold to crank flashlight
+            if (Input.GetMouseButton(1) && !internalLightActivated)
+            {
+                currentBattery += increaseBattery * Time.deltaTime;
+
+                if (currentBattery > 100.0f)
+                {
+                    currentBattery = 100.0f;
+                }
+            }
+            else 
+            {
+                currentBattery -= decreaseBattery * Time.deltaTime;
+
+                if (currentBattery < 0)
+                {
+                    currentBattery = 0f;
+                    internalLight = false;
+                    externalLight = false;
+                }
             }
 
         }
