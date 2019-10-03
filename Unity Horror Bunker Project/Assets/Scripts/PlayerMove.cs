@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float dashCooldownTime = 10.0f;
+    private float dashCooldownTime = 10.0f;
     private float dashSpeedTimeAtMaxSpeed = 1.5f;
     private float dashSpeedTimeToMaxSpeed = 3.0f;
     private float dashSpeedTimeToDrop = 1.5f;
