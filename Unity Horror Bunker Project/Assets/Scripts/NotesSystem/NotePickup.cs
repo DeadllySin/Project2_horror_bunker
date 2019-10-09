@@ -6,7 +6,7 @@ public class NotePickup : MonoBehaviour, IInteractable
 {
     [SerializeField] Note note = null;
 
-    [SerializeField] bool autoDisplay = true;
+    bool autoDisplay = true;
 
     public void Interact()
     {
