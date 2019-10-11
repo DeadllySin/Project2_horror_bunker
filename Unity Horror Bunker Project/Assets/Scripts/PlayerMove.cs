@@ -7,8 +7,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float dashCooldownTime;
-    private float dashSpeedTimeAtMaxSpeed = 3.0f;
+    private float dashCooldownTime = 10.0f;
+    private float dashSpeedTimeAtMaxSpeed = 1.5f;
     private float dashSpeedTimeToMaxSpeed = 3.0f;
     private float dashSpeedTimeToDrop = 1.5f;
     private float dashSpeedIncrease = 0.03f;
@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     private bool isDashOn = false;
     private bool isSpeedGoingUp = false; // don't refactor
     private KeyCode dashKey = KeyCode.LeftShift; // don't refactor
+
     
 
     private CharacterController charController;
@@ -30,7 +31,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+
         PlayerMovement();
+
     }
 
     private void PlayerMovement()
@@ -38,40 +41,44 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(dashKey) && isSpeedGoingUp == false && isDashOn == false)
         {
             StartCoroutine(DashSpeedChange());
-        }    
+        }
 
-        
-        float horizInput = Input.GetAxis(horizontalInput) * movementSpeed;
-        float vertInput = Input.GetAxis(verticalInput) * movementSpeed;
+
+        float horizInput = Input.GetAxis(horizontalInput);
+        float vertInput = Input.GetAxis(verticalInput);
 
         Vector3 forwardMovement = transform.forward * vertInput;
         Vector3 rightMovement = transform.right * horizInput;
 
-        charController.SimpleMove(forwardMovement + rightMovement);
+        charController.SimpleMove(Vector3.ClampMagnitude(forwardMovement + rightMovement, 1.0f) * movementSpeed);
     }
 
     private IEnumerator DashSpeedChange()
     { 
         isSpeedGoingUp = true;
-        movementSpeed += dashSpeedIncrease;
+        movementSpeed += 1.5f;
+        yield return new WaitForSeconds(1.5f);
+        movementSpeed += 1.5f;
         if (movementSpeed > dashSpeedMax)
             movementSpeed = dashSpeedMax;
         yield return new WaitForSeconds(dashSpeedTimeToMaxSpeed);
         movementSpeed = dashSpeedMax;
         yield return new WaitForSeconds(dashSpeedTimeAtMaxSpeed);
-        movementSpeed -= dashSpeedDecrease;
+        movementSpeed -= 1.5f;
+        yield return new WaitForSeconds(0.75f);
+        movementSpeed -= 1.5f;
         if (movementSpeed < 1.5f)
             movementSpeed = 1.5f;
         yield return new WaitForSeconds(dashSpeedTimeToDrop);
         movementSpeed = 1.5f;
-        isSpeedGoingUp = false;
+        
         StartCoroutine(DashCooldown());
     }
 
     private IEnumerator DashCooldown()
     {
-        isDashOn = true;
         yield return new WaitForSeconds(dashCooldownTime);
         isDashOn = false;
+        isSpeedGoingUp = false;
     }
 }

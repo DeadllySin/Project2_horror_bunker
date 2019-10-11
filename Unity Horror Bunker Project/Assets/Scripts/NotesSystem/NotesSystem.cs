@@ -42,7 +42,7 @@ public class NotesSystem : MonoBehaviour
     #region Data and Actions
     [SerializeField] UIElements UI = new UIElements();
 
-    private Action<Note> A_Display = delegate { };
+    private static Action<Note> A_Display = delegate { };
 
     #endregion
 
@@ -82,26 +82,44 @@ public class NotesSystem : MonoBehaviour
     }
     #endregion
 
+    #region UI update methods
+
     public void Open()
     {
-        //disable character controller
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
+        //disable character controller       
+        UpdateCanvasGroup(true, UI.NoteCanvasGroup);
     }
 
     public void Close()
     {
+        SwitchGameControls(false);
         //enable character controller
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
-
         CloseNote();
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
     }
 
-    private void DisplayNote(Note note)
+    public void SwitchGameControls(bool state)
     {
+        switch (state)
+        {
+            case true:
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                break;
+
+            case false:
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                break;
+        }
+    }
+
+    public void DisplayNote(Note note)
+    {
+        if (note == null) { return; }
+
+        SwitchGameControls(true);
+
         UpdateCanvasGroup(true, UI.NoteCanvasGroup);
         activeNote = note;
 
@@ -118,7 +136,6 @@ public class NotesSystem : MonoBehaviour
             if (readSubscript == true)
                 UpdateSubscript();
 
-
         switch (activeNote.Pages[page].Type)
         {
             case PageType.Text:
@@ -133,8 +150,14 @@ public class NotesSystem : MonoBehaviour
         UpdateUI();
     }
 
+    public static void Display (Note note)
+    {
+        A_Display(note);
+    }
+
     public void CloseNote()
     {
+        SwitchGameControls(false);
         UpdateCanvasGroup(false, UI.NoteCanvasGroup);
         OnNoteClose();
     }
@@ -199,4 +222,6 @@ public class NotesSystem : MonoBehaviour
         currentPage = 0;
         readSubscript = false;
     }
+
+    #endregion
 }
