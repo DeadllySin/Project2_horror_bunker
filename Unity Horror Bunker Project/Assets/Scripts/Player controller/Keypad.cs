@@ -8,7 +8,9 @@ public class Keypad : MonoBehaviour
     public string input;
     public bool onTrigger; //checks if the player collides with the collider
     public bool doorOpen; //checks if the door is opened
-    public Transform doorHinge;
+    public Transform door;
+    [SerializeField] private float doorOpenRotationValue;
+    [SerializeField] private float doorClosedRotationValue;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject EnterCodeButton;
     [SerializeField] private GameObject CorrectCodeLight, ErrorCodeLight;
@@ -36,8 +38,11 @@ public class Keypad : MonoBehaviour
 
         if (doorOpen)
         {
-            var newRot = Quaternion.RotateTowards(doorHinge.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 25);
-            doorHinge.rotation = newRot;
+            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, doorOpenRotationValue, 0.0f), Time.deltaTime * 60);
+            door.rotation = newRot;
+        } else if (!doorOpen)
+        {
+            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, doorClosedRotationValue, 0.0f), Time.deltaTime * 60);
         }
     }
 
