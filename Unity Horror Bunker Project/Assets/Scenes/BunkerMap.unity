@@ -1928,8 +1928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1835871189}
-  doorOpenRotationValue: 0
-  doorClosedRotationValue: -90
+  doorOpenRotationValue: -90
+  doorClosedRotationValue: 0
   door: {fileID: 1155854569}
   doorOpen: 0
 --- !u!1 &1158014334 stripped
