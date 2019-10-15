@@ -66,12 +66,15 @@ public class Fovdetect : MonoBehaviour
 
                     if (angle <= maxAngle)
                     {
+                        
 
                         Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
                         RaycastHit hit;
 
                         if (Physics.Raycast(ray, out hit, maxRadius))
                         {
+                            // possible point to place radious sound
+
                             if (hit.transform == target)
                             {
                                 return true;
