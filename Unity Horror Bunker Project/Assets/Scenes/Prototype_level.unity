@@ -929,7 +929,7 @@ MonoBehaviour:
   currentState: 0
   decisionDelay: 0.5
   target: {fileID: 1225956249}
-  fovDetect: {fileID: 1891439249}
+  fovDetect: {fileID: 0}
 --- !u!65 &488852107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1698,7 +1698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &973365969
 Transform:
   m_ObjectHideFlags: 0
@@ -3036,7 +3036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1225956249}
-  maxAngle: 30
+  maxAngle: 37
   maxRadius: 24
   Alert: 0
   isExposed: 0
@@ -3927,17 +3927,17 @@ PrefabInstance:
     - target: {fileID: 8395373046973632876, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.95
+      value: 49.76
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632876, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632876, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.42
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8395373046973632876, guid: a8d5500af70ce7e4a8c852218d1e4aeb,
         type: 3}
