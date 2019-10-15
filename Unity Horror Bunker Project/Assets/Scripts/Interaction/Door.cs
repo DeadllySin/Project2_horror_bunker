@@ -5,6 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] Transform player;
+    
+    [SerializeField] private float doorOpenRotationValue; 
+    [SerializeField] private float doorClosedRotationValue;
     public Transform door;
     public bool doorOpen;
 
@@ -17,14 +20,14 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (doorOpen)
+        if (doorOpen && player != null && door != null)
         {
-            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, -90.0f, 0.0f), Time.deltaTime * 60);
+            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, doorOpenRotationValue, 0.0f), Time.deltaTime * 60);
             door.rotation = newRot;
         }
         else if (!doorOpen)
         {
-            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, 0.0f, 0.0f), Time.deltaTime * 60);
+            var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, doorClosedRotationValue, 0.0f), Time.deltaTime * 60);
             door.rotation = newRot;
         }
     }
