@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FOVdetect : MonoBehaviour
+public class Fovdetect : MonoBehaviour
 {
-    public Transform player;
-    public float maxAngle;
-    public float maxRadius;
+    [SerializeField] private Transform player;
+    [SerializeField] private float maxAngle;
+    [SerializeField] private float maxRadius;
 
+    [SerializeField] private float Alert;
+     private float AlertOverTimeExposed, AlertOverTimeHidden;
+
+    public bool isExposed;
     private bool isInFov = false;
 
     private void OnDrawGizmos()
@@ -86,5 +90,54 @@ public class FOVdetect : MonoBehaviour
     private void Update()
     {
         isInFov = inFOV(transform, player, maxAngle, maxRadius);
+
+        DetectPlayer();
     }
+
+    void AlertLimiter()
+    {
+        // limits the value for code optimisation
+        if (Alert < 0)
+        {
+            Alert = 0f;
+        }
+        else if (Alert > 100f)
+        {
+            Alert = 100f;
+        }
+    }
+
+    private void DetectPlayer()
+    {
+        //// Set the values of detection frequency
+        AlertOverTimeExposed = 69.0f;
+        AlertOverTimeHidden = 8.0f;
+
+        // Math clamp the values to modify
+        Alert = Mathf.Clamp(Alert, 0.0f, 100.0f);
+
+        if (!isInFov)
+        {
+            // check if target is not in enemy FOV
+            Alert -= AlertOverTimeHidden * Time.deltaTime;
+        }
+        else
+        {
+            // do something if player is in enemy POV
+            Alert += AlertOverTimeExposed * Time.deltaTime;
+        }
+
+        // Visual Cue Test
+        if (Alert >= 100.0f)
+        {
+            isExposed = true;
+        }
+        else if (Alert <= 0.0f)
+        {
+            isExposed = false;
+        }
+
+        AlertLimiter();
+    }
+
 }

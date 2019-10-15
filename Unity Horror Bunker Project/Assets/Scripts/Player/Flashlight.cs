@@ -11,11 +11,15 @@ public class Flashlight : MonoBehaviour
     public static Flashlight Instance;
     public GameObject flashlight;
     private Light _light;
-    public float currentLight;
+
     public int packBattery;
     private int maxPackBattery;
+
+    public float currentLight;
     public float currentBattery;
     private float increaseBattery, decreaseBattery;
+
+    private bool isexternalBattery;
     private bool flashlightEnabled;
     private bool internalLight;
     private bool internalLightActivated;
@@ -59,10 +63,11 @@ public class Flashlight : MonoBehaviour
         if (flashlightEnabled)
         {
             flashlight.SetActive(true);
-        
+
             //Reload add-on external battery
             if (Input.GetKeyDown(KeyCode.R) && packBattery > 0)
             {
+                isexternalBattery = true;
                 currentBattery += 100f;
                 packBattery -= 1;
                
@@ -89,16 +94,29 @@ public class Flashlight : MonoBehaviour
                 internalLight =! internalLight;
             }
 
+
             if (internalLight)
             {
                 _light.intensity = 3.5f;
-                decreaseBattery = 12.5f;
+                decreaseBattery = 5.0f;
                 internalLightActivated = true;
+
+                if (isexternalBattery)
+                {
+                    _light.intensity = 9.0f;
+                    decreaseBattery = 8.0f;
+                }
+
+                if (currentBattery <= 30)
+                {
+                    _light.intensity = 1.5f;
+                    decreaseBattery = 2.0f;
+                }
             }
             else
             {
                 _light.intensity = 0.5f;
-                decreaseBattery = 4.5f;
+                decreaseBattery = 2.0f;
                 internalLightActivated = false;
             }
            
@@ -122,6 +140,7 @@ public class Flashlight : MonoBehaviour
                     currentBattery = 0f;
                     internalLight = false;
                     externalLight = false;
+                    isexternalBattery = false;
                 }
             }
 
