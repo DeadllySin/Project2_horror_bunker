@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     [SerializeField] private float doorClosedRotationValue;
     public Transform door;
     public bool doorOpen;
+    public bool doorLocked;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (doorOpen && player != null && door != null)
+        if (doorOpen && player != null && door != null && doorLocked == false)
         {
             var newRot = Quaternion.RotateTowards(door.rotation, Quaternion.Euler(0.0f, doorOpenRotationValue, 0.0f), Time.deltaTime * 60);
             door.rotation = newRot;
