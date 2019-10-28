@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Note", menuName = "Notes system/new Note")]
+[CreateAssetMenu(fileName = "Notes System", menuName = "Notes System/New Note")]
 public class Note : ScriptableObject
 {
     [SerializeField] string label = string.Empty;
