@@ -18,7 +18,9 @@ MonoBehaviour:
   removeItem: 0
   giveItem: {fileID: 0}
   removeGameObject: 0
-  replaceInteraction: {fileID: 11400000}
+  replaceInteraction: {fileID: 0}
+  replaceTarget: {fileID: 0}
+  newInteractioNeedsForce: 0
   Description: 'This action always performs the default action for an InteractionTarget
 
 

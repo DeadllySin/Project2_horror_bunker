@@ -388,6 +388,9 @@ MonoBehaviour:
   toolTipText: Rusty Key
   interaction: {fileID: 11400000, guid: 29857fe3c487e434697f40c234ba0d15, type: 2}
   target: {fileID: 0}
+  needsForce: 0
+  needsForceAmount: 5
+  interactionCooldown: 0.5
 --- !u!136 &398899017
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -477,7 +480,7 @@ GameObject:
   - component: {fileID: 495346499}
   - component: {fileID: 495346498}
   m_Layer: 8
-  m_Name: Door 1
+  m_Name: Simple Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0521ee8ab1dfa9b4e859d194030a8b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  door: {fileID: 495346496}
 --- !u!114 &495346499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +545,9 @@ MonoBehaviour:
   toolTipText: 
   interaction: {fileID: 11400000, guid: e0e8cdd9d590fa0429b4c6ea7adef61b, type: 2}
   target: {fileID: 0}
+  needsForce: 1
+  needsForceAmount: 3
+  interactionCooldown: 0.5
 --- !u!65 &495346501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -862,6 +868,9 @@ MonoBehaviour:
   toolTipText: Door
   interaction: {fileID: 11400000, guid: a247bc8db30e8284d873e8cf277f4d19, type: 2}
   target: {fileID: 0}
+  needsForce: 0
+  needsForceAmount: 5
+  interactionCooldown: 0.5
 --- !u!1 &897503984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1064,7 @@ GameObject:
   - component: {fileID: 926872094}
   - component: {fileID: 926872093}
   m_Layer: 0
-  m_Name: Simple Door
+  m_Name: Door 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1327,7 +1336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0521ee8ab1dfa9b4e859d194030a8b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  door: {fileID: 1489175683}
 --- !u!114 &1489175689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1420,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498604402, guid: a8d5500af70ce7e4a8c852218d1e4aeb, type: 3}
+      propertyPath: forceReleasePerSecond
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d5500af70ce7e4a8c852218d1e4aeb, type: 3}
@@ -1584,6 +1597,9 @@ MonoBehaviour:
   toolTipText: Door
   interaction: {fileID: 11400000, guid: d1b3efc0368ea88478fef173b64a4322, type: 2}
   target: {fileID: 1489175689}
+  needsForce: 0
+  needsForceAmount: 5
+  interactionCooldown: 0.5
 --- !u!65 &1639846184
 BoxCollider:
   m_ObjectHideFlags: 0
