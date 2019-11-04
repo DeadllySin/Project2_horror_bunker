@@ -11,7 +11,20 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private InteractionTarget target = null;
 
+    [SerializeField]
+    private bool needsForce = false;
+
+    [SerializeField]
+    private float needsForceAmount = 3f;
+
+    [SerializeField]
+    private float interactionCooldown = 0.5f;
+
     private InventoryManager inventoryManager;
+    private float currentCooldown = 0;
+
+    public bool NeedsForce { get => needsForce; set => needsForce = value; }
+    public float NeedsForceAmount { get => needsForceAmount; set => needsForceAmount = value; }
 
     public void Start()
     {
@@ -27,35 +40,67 @@ public class Interactable : MonoBehaviour
         inventoryManager = GameObject.Find("Inventory Manager").GetComponent<InventoryManager>();
     }
 
+    public void Update()
+    {
+        if (currentCooldown > 0)
+        {
+            currentCooldown -= interactionCooldown * Time.deltaTime;
+        }
+    }
+
     public void Interact()
     {
-        if (interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
+        if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
         {
+            // TODO: Play interaction fail sound (if any)
             return;
         }
 
         ManageInventory();
 
+        InteractWithTarget();
+
+        DoReplacements();
+    }
+
+    private void DoReplacements()
+    {
+        needsForce = interaction.NewInteractioNeedsForce;
+
+        // TODO: Find a better way to replace targets, since multiple GameObjects can be named the same.
+
+        if (!string.IsNullOrEmpty(interaction.ReplaceTargetByName))
+        {
+            this.target = GameObject.Find(interaction.ReplaceTargetByName).GetComponent<InteractionTarget>();
+        }
+
+        if (interaction.ReplaceInteraction != null)
+        {
+            interaction = interaction.ReplaceInteraction;
+        }
+    }
+
+    private void InteractWithTarget()
+    {
         if (target != null)
         {
             interaction.Interact(target);
+            currentCooldown = interactionCooldown;
 
-            if (interaction.RemoveGameObject)
+            if (interaction.RemoveTargetFromWorld)
             {
                 Destroy(target.transform.gameObject);
             }
         }
-        else if (interaction.RemoveGameObject)
+        else if (interaction.RemoveTargetFromWorld)
         {
             Destroy(this.transform.gameObject);
         }
-
-        interaction = interaction.ReplaceInteraction;
     }
 
     private void ManageInventory()
     {
-        if (interaction.RemoveItem)
+        if (interaction.RemoveNeededItem && interaction.NeedItem != null)
         {
             inventoryManager.RemoveItem(interaction.NeedItem);
         }
@@ -66,9 +111,18 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public string GetToolTipText()
+    public void SetUITooltip()
     {
-        // TODO: UI
-        return toolTipText;
+        // TODO: Set UI Tooltip
+<<<<<<< Updated upstream
+        Debug.Log(toolTipText);
+=======
+>>>>>>> Stashed changes
     }
+
+    public void ClearUITooltip()
+    {
+        // TODO: Clear UI Tooltip
+    }
+
 }

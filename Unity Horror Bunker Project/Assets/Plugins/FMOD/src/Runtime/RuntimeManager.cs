@@ -674,8 +674,6 @@ retry:
             }
             else if (loadResult == FMOD.RESULT.ERR_EVENT_ALREADY_LOADED)
             {
-                // someone loaded this bank directly using the studio API
-                // TODO: will the null bank handle be an issue
                 loadedBank.RefCount = 2;
                 Instance.loadedBanks.Add(bankName, loadedBank);
             }
@@ -791,8 +789,6 @@ retry:
                 }
                 else if (loadResult == FMOD.RESULT.ERR_EVENT_ALREADY_LOADED)
                 {
-                    // someone loaded this bank directly using the studio API
-                    // TODO: will the null bank handle be an issue
                     loadedBank.RefCount = 2;
                     Instance.loadedBanks.Add(bankName, loadedBank);
                 }

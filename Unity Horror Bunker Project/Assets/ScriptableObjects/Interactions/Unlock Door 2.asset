@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80cd166b8ad84240a7ac95c6e9d5cf8, type: 3}
   m_Name: Unlock Door 2
   m_EditorClassIdentifier: 
-  interactionType: 4
+  interactionType: 8
   interactionText: Unlock
   needsItem: {fileID: 11400000, guid: 3c4c0a1d51b377a43b94fd37a2621aad, type: 2}
   removeItem: 1
   giveItem: {fileID: 0}
   removeGameObject: 0
   replaceInteraction: {fileID: 11400000, guid: e0e8cdd9d590fa0429b4c6ea7adef61b, type: 2}
+  replaceTarget: {fileID: 0}
+  newInteractioNeedsForce: 0
   Description: 

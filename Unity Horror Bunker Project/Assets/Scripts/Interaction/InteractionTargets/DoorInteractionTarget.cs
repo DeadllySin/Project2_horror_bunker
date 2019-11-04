@@ -50,7 +50,7 @@ public class DoorInteractionTarget : InteractionTarget
                 break;
 
             default:
-                Debug.Log("Confused door...");
+                Debug.Log("Confused door named: " + this.gameObject.ToString());
                 break;
         }
     }
@@ -77,6 +77,7 @@ public class DoorInteractionTarget : InteractionTarget
 
     public void Close()
     {
+        // TODO: Don´t close when the player is in the way.
         open = false;
         animator.SetBool("open", open);
     }
@@ -99,6 +100,7 @@ public class DoorInteractionTarget : InteractionTarget
 
     private IEnumerator AutoClose()
     {
+        // TODO: Stop Coroutine when players closes the door manually.
         yield return new WaitForSeconds(autoCloseDelay);
         Close();
     }
