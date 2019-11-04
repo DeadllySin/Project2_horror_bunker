@@ -43,6 +43,7 @@ public class Interaction : ScriptableObject
     [SerializeField]
     private bool removeTargetFromWorld;
 
+    // Description is used to describe the interaction in the Unity-editor, if needed. It is not used anywhere else.
     [TextArea(15, 15)]
     public string Description;
 

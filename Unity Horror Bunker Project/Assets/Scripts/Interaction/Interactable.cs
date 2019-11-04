@@ -52,6 +52,7 @@ public class Interactable : MonoBehaviour
     {
         if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
         {
+            // TODO: Play interaction fail sound (if any)
             return;
         }
 
@@ -65,6 +66,8 @@ public class Interactable : MonoBehaviour
     private void DoReplacements()
     {
         needsForce = interaction.NewInteractioNeedsForce;
+
+        // TODO: Find a better way to replace targets, since multiple GameObjects can be named the same.
 
         if (!string.IsNullOrEmpty(interaction.ReplaceTargetByName))
         {
@@ -108,9 +111,18 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public string GetToolTipText()
+    public void SetUITooltip()
     {
-        // TODO: UI
-        return toolTipText;
+        // TODO: Set UI Tooltip
+<<<<<<< Updated upstream
+        Debug.Log(toolTipText);
+=======
+>>>>>>> Stashed changes
     }
+
+    public void ClearUITooltip()
+    {
+        // TODO: Clear UI Tooltip
+    }
+
 }

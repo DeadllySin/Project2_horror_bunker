@@ -35,20 +35,25 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                forceBuildUp = true;
-                currentForce += forceAddPerInteraction;
-                if (currentForce >= interactable.NeedsForceAmount)
-                {
-                    interactable.Interact();
-                    currentForce = 0f;
-                    forceBuildUp = false;
-                }
+                BuildUpForce();
             }
         }
 
         if (forceBuildUp)
         {
             ReleaseForce();
+        }
+    }
+
+    private void BuildUpForce()
+    {
+        forceBuildUp = true;
+        currentForce += forceAddPerInteraction;
+        if (currentForce >= interactable.NeedsForceAmount)
+        {
+            interactable.Interact();
+            currentForce = 0f;
+            forceBuildUp = false;
         }
     }
 
