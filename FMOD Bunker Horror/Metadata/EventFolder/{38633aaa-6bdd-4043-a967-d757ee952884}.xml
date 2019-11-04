@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EventFolder" id="{38633aaa-6bdd-4043-a967-d757ee952884}">
+		<property name="name">
+			<value>Caretaker Private</value>
+		</property>
+		<relationship name="folder">
+			<destination>{6a7b6868-975e-40ea-aa79-6ee664ce2e18}</destination>
+		</relationship>
+	</object>
+</objects>
