@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="Workspace" id="{6dfb6bf1-887c-45c8-8964-fe09b8667c61}">
+		<property name="builtBanksOutputDirectory">
+			<value>../GitHub/Project2_horror_bunker/FMOD Builds</value>
+		</property>
+		<relationship name="masterEventFolder">
+			<destination>{7e817afd-54a8-4a62-a957-6927c1800dac}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{0a5942cc-7d84-4730-98c1-a1c5b252cd5a}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{a401c7ee-ac01-4120-94b2-28b5c40eb694}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{42312b9c-67b5-4c20-b04c-5c61501739b0}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{6229b285-0178-4645-b263-56887858534f}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{b9934a4b-665c-4329-a79b-f0f39be7010f}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{99419a38-4c4e-4c7e-8b68-d668ac95539e}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{cc0e71fb-cf96-4090-895c-2f9f222880d6}</destination>
+		</relationship>
+	</object>
+</objects>
