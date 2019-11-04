@@ -17,8 +17,7 @@ MonoBehaviour:
   HasPlatforms: 0
   sourceProjectPath: 
   SourceProjectPathUnformatted: 
-  SourceBankPathUnformatted: W:\Unity\Dawn Approaches\Project2_horror_bunker\FMOD
-    Builds\Desktop
+  SourceBankPathUnformatted: C:\Users\sande\Documents\Unity Games\AdvHorGame\Assets\Audio\Desktop
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -77,6 +76,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Equipment
+  - Gak
   BanksToLoad: []
   LiveUpdatePort: 9264
