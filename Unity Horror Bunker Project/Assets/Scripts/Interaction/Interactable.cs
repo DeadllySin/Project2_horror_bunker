@@ -114,10 +114,7 @@ public class Interactable : MonoBehaviour
     public void SetUITooltip()
     {
         // TODO: Set UI Tooltip
-<<<<<<< Updated upstream
         Debug.Log(toolTipText);
-=======
->>>>>>> Stashed changes
     }
 
     public void ClearUITooltip()

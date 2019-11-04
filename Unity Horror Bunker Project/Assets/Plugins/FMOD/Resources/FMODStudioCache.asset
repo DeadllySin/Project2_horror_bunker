@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: W:\Unity\Dawn Approaches\Project2_horror_bunker\FMOD Builds\Desktop\Master.bank
   SubDir: 
-  lastModified: 637085095574864770
+  lastModified: 637085115851630584
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: W:\Unity\Dawn Approaches\Project2_horror_bunker\FMOD Builds\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 637085095574985968
+  lastModified: 637085115851734382
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -765,7 +765,7 @@ MonoBehaviour:
   - {fileID: -7740573564297563826}
   StringsBanks:
   - {fileID: -4569927690880454848}
-  stringsBankWriteTime: 637085095574985968
+  stringsBankWriteTime: 637085115851734382
   cacheVersion: 3
 --- !u!114 &33517344730870444
 MonoBehaviour:
