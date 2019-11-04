@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EventFolder" id="{37e95358-2e2c-412e-950d-5793a40a6661}">
+		<property name="name">
+			<value>Bunker Level</value>
+		</property>
+		<relationship name="folder">
+			<destination>{6a7b6868-975e-40ea-aa79-6ee664ce2e18}</destination>
+		</relationship>
+	</object>
+</objects>

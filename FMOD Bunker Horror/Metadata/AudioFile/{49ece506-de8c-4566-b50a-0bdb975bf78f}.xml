@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{49ece506-de8c-4566-b50a-0bdb975bf78f}">
+		<property name="assetPath">
+			<value>Player/Bull_moo_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.4583333333333335</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9934a4b-665c-4329-a79b-f0f39be7010f}</destination>
+		</relationship>
+	</object>
+</objects>

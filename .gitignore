@@ -10,8 +10,10 @@ Unity Horror Bunker Project/[Bb]uilds/
 Unity Horror Bunker Project/[Ll]ogs/
 Unity Horror Bunker Project/[Mm]emoryCaptures/
 
-# Never ignore Asset meta data
-!Unity Horror Bunker Project/[Aa]ssets/**/*.meta
+#Ignore all .meta file
+*.meta
+#But not source file with postfix. which is everything but a folder
+!*.*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*

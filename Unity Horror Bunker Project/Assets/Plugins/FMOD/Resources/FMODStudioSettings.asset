@@ -17,7 +17,11 @@ MonoBehaviour:
   HasPlatforms: 0
   sourceProjectPath: 
   SourceProjectPathUnformatted: 
+<<<<<<< HEAD
   SourceBankPathUnformatted: C:\Users\sande\Documents\Unity Games\AdvHorGame\Assets\Audio\Desktop
+=======
+  SourceBankPathUnformatted: D:\Sound\GitHub\Project2_horror_bunker\FMOD Builds\Desktop
+>>>>>>> d771c91ed6c9905cde4a8a32dd6c28ba2e827f86
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
