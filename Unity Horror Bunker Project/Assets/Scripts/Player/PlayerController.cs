@@ -85,4 +85,9 @@ public class PlayerController : MonoBehaviour
 
         characterController.SimpleMove(movement);
     }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
 }

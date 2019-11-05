@@ -14,20 +14,27 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     private float forceReleasePerSecond = 2.5f;
 
+    private UIManager myUImanager;
+
     private RaycastHit hit;
     private Interactable interactable;
     private bool hasHit;
     private bool forceBuildUp = false;
     public float currentForce = 0;
 
-    private void Update()
+    void Start()
+    {
+        myUImanager = GameObject.FindObjectOfType<UIManager>();
+    }
+
+    void Update()
     {
         if (Time.frameCount % 5 == 0)
         {
             FindInteractables();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && hasHit)
+        if (Input.GetKeyDown(KeyCode.E) && hasHit && interactable != null)
         {
             if (interactable.NeedsForce == false)
             {
@@ -62,10 +69,12 @@ public class PlayerInteraction : MonoBehaviour
         if (hasHit = DoRayCast())
         {
             interactable = hit.collider.gameObject.GetComponent<Interactable>();
+            myUImanager.CrosshairInteract(true);
         }
         else
         {
             interactable = null;
+            myUImanager.CrosshairInteract(false);
         }
     }
 

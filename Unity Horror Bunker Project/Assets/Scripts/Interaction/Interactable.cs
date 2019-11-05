@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     private float needsForceAmount = 3f;
 
     [SerializeField]
-    private float interactionCooldown = 0.5f;
+    private float interactionCooldown = 0f;
 
     private InventoryManager inventoryManager;
     private float currentCooldown = 0;
