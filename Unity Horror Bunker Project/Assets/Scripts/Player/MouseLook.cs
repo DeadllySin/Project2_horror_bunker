@@ -18,6 +18,7 @@ public class MouseLook : MonoBehaviour
     // Assign this if there's a parent object controlling motion, such as a Character Controller.
     // Yaw rotation will affect this object instead of the camera if set.
     public GameObject characterBody;
+    private InputManager myInputManager;
 
     private void Start()
     {
@@ -27,16 +28,19 @@ public class MouseLook : MonoBehaviour
         // Set target direction for the character body to its inital state.
         if (characterBody)
             targetCharacterDirection = characterBody.transform.localRotation.eulerAngles;
+
+        // Ensure the cursor is always locked when set
+
+        myInputManager = GameObject.FindObjectOfType<InputManager>();
     }
 
     private void Update()
     {
-        // Ensure the cursor is always locked when set
-        if (lockCursor)
+        if (myInputManager.PlayerCanMove() == false)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            return;
         }
-
+        
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);

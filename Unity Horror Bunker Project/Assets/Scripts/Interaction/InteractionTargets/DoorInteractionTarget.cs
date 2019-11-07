@@ -77,7 +77,7 @@ public class DoorInteractionTarget : InteractionTarget
 
     public void Close()
     {
-        // TODO: Don´t close when the player is in the way.
+        StopCoroutine("AutoClose");
         open = false;
         animator.SetBool("open", open);
     }

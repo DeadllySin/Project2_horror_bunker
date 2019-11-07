@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 5
-  staminaRegenRate: 0.5
+  staminaRegenerationRate: 0.5
 --- !u!114 &1498604402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,8 +160,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  interactionDistance: 5
-  hasHit: 0
+  interactionDistance: 3
+  forceAddPerInteraction: 0.2
+  forceReleasePerSecond: 0.5
+  currentForce: 0
 --- !u!1 &8395373047628556709
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +176,7 @@ GameObject:
   - component: {fileID: 8395373047628556704}
   - component: {fileID: 8395373047628556705}
   - component: {fileID: 6552529971204837484}
+  - component: {fileID: 1045937644459216635}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -265,3 +268,20 @@ MonoBehaviour:
   targetDirection: {x: 0, y: 0}
   targetCharacterDirection: {x: 0, y: 0}
   characterBody: {fileID: 8395373046973632877}
+--- !u!114 &1045937644459216635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395373047628556709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1606562cf10cd5545b5fe5a52fe43dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headBobbing: 1
+  bobbingSpeed: 0.2
+  bobbingAmount: 0.05
+  midpoint: 0.6
+  playerController: {fileID: -196734192219683021}

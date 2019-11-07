@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Collectibles/Item")]
 public class Item : ScriptableObject
-{
-    public enum ItemType
+{    public enum ItemType
     {
         Key,
         Consumable,
@@ -11,19 +10,19 @@ public class Item : ScriptableObject
     }
 
     [SerializeField]
-    private Sprite InventoryImage;
+    private Sprite inventoryImage;
     
     [SerializeField]
-    private ItemType Itemtype;
+    private ItemType itemtype;
     
     [SerializeField]
-    private string ItemName;
+    private string itemName;
 
     [SerializeField]
     [TextArea(5, 15)]
     private string Description;
 
-    public Sprite InventoryImage1 { get => InventoryImage; set => InventoryImage = value; }
-    public ItemType Itemtype1 { get => Itemtype; set => Itemtype = value; }
-    public string ItemName1 { get => ItemName; set => ItemName = value; }
+    public Sprite InventoryImage1 { get => inventoryImage; set => inventoryImage = value; }
+    public ItemType Itemtype1 { get => itemtype; set => itemtype = value; }
+    public string ItemName1 { get => itemName; set => itemName = value; }
 }

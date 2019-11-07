@@ -10,7 +10,6 @@ public class Interaction : ScriptableObject
         Lock,
         Open,
         Put,
-        Take,
         TurnOff,
         TurnOn,
         Unlock
