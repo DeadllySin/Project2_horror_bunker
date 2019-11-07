@@ -10,11 +10,18 @@ public class UIManager : MonoBehaviour
     
     [SerializeField]
     private Image crosshairInteract = null;
+
+    [SerializeField]
+    private NoteUI noteUI = null;
+
+    private InputManager myInputManager = null;
         
     // Start is called before the first frame update
     void Start()
     {
         CrossHair(true);
+        noteUI.gameObject.SetActive(false);
+        myInputManager = GameObject.FindObjectOfType<InputManager>();
     }
 
     // Update is called once per frame
@@ -31,5 +38,18 @@ public class UIManager : MonoBehaviour
     public void CrosshairInteract(bool interactCrosshair)
     {
         crosshairInteract.enabled = interactCrosshair;
+    }
+
+    public void ShowNote(Note note)
+    {
+        myInputManager.StopPlayerMovement();
+        noteUI.gameObject.SetActive(true);
+        noteUI.ShowNote(note);
+    }
+
+    public void CloseNote()
+    {
+        noteUI.gameObject.SetActive(false);
+        myInputManager.StartPlayerMovement();
     }
 }

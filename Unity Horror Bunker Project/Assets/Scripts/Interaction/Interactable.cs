@@ -2,8 +2,24 @@
 
 public class Interactable : MonoBehaviour
 {
+    private enum InteractionType
+    {
+        Item,
+        Note,
+        Interaction
+    }
+    
     [SerializeField]
     private string toolTipText = null;
+
+    [SerializeField]
+    private InteractionType interactionType = InteractionType.Item;
+
+    [SerializeField]
+    private Item giveItem = null;
+
+    [SerializeField]
+    private Note openNote = null;
 
     [SerializeField]
     public Interaction interaction = null;
@@ -15,16 +31,18 @@ public class Interactable : MonoBehaviour
     private bool needsForce = false;
 
     [SerializeField]
-    private float needsForceAmount = 3f;
+    private float needsForceAmount = 3.0f;
 
     [SerializeField]
-    private float interactionCooldown = 0f;
+    private float interactionCooldown = 0.0f;
 
     private InventoryManager inventoryManager;
-    private float currentCooldown = 0;
+    private NotesManager notesManager;
+    private float currentCooldown = 0.0f;
 
-    public bool NeedsForce { get => needsForce; set => needsForce = value; }
-    public float NeedsForceAmount { get => needsForceAmount; set => needsForceAmount = value; }
+    public bool NeedsForce { get => needsForce;}
+    public float NeedsForceAmount { get => needsForceAmount;}
+    public string ToolTipText { get => toolTipText;}
 
     public void Start()
     {
@@ -36,8 +54,8 @@ public class Interactable : MonoBehaviour
         {
             target = GetComponent<InteractionTarget>();
         }
-
         inventoryManager = GameObject.Find("Inventory Manager").GetComponent<InventoryManager>();
+        notesManager = GameObject.Find("Notes Manager").GetComponent<NotesManager>();
     }
 
     public void Update()
@@ -50,17 +68,33 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
+        switch (interactionType)
         {
-            // TODO: Play interaction fail sound (if any)
-            return;
+            case InteractionType.Item:
+                inventoryManager.AddItem(giveItem);
+                Destroy(this.transform.gameObject);
+                break;
+            case InteractionType.Note:
+                if (!notesManager.HasItem(openNote))
+                {
+                    notesManager.AddNote(openNote);
+                }
+                notesManager.ShowNote(openNote);
+                break;
+            case InteractionType.Interaction:
+                if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
+                {
+                    // Play interaction fail sound?
+                    return;
+                }
+
+                ManageInventory();
+
+                InteractWithTarget();
+
+                DoReplacements();
+                break;
         }
-
-        ManageInventory();
-
-        InteractWithTarget();
-
-        DoReplacements();
     }
 
     private void DoReplacements()
@@ -110,16 +144,4 @@ public class Interactable : MonoBehaviour
             inventoryManager.AddItem(interaction.GiveItem);
         }
     }
-
-    public void SetUITooltip()
-    {
-        // TODO: Set UI Tooltip
-        Debug.Log(toolTipText);
-    }
-
-    public void ClearUITooltip()
-    {
-        // TODO: Clear UI Tooltip
-    }
-
 }

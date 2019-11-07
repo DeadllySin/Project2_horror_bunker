@@ -14,24 +14,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private KeyCode runKey = KeyCode.LeftShift;
 
-    // [SerializeField]
-    // private KeyCode jumpKey = KeyCode.Space;
-
     private bool running;
     private float currentSpeed;
     private float currentSpeedRampTime;
     private CharacterController characterController;
+    private InputManager myInputManager;
     private Stamina stamina;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        myInputManager = GameObject.FindObjectOfType<InputManager>();
         stamina = GetComponent<Stamina>();
         currentSpeed = walkSpeed;
     }
 
     private void Update()
     {
+        if (myInputManager.PlayerCanMove() == false)
+        {
+            return;
+        }
+
         CalculateSpeed();
         DoMovement();
     }

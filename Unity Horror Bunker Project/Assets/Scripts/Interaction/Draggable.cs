@@ -3,7 +3,7 @@
 public class Draggable : MonoBehaviour
 {
     [SerializeField]
-    private float DragInteractionDistance = 2.5f;
+    private float DragInteractionDistance = 3.0f;
     
     private Vector3 mOffSet;
     private float mZCoord;

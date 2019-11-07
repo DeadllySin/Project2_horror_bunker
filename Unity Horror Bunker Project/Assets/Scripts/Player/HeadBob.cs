@@ -17,12 +17,19 @@ public class HeadBob : MonoBehaviour
     [SerializeField]
     private PlayerController playerController = null;
 
+    private InputManager myInputManager;
+
     private float bobSpeedFactor = 3.0f;
     private float timer = 0.0f;
 
+    private void Start()
+    {
+        myInputManager = GameObject.FindObjectOfType<InputManager>();
+    }
+
     private void FixedUpdate()
     {
-        if (!headBobbing)
+        if (!headBobbing && myInputManager.PlayerCanMove())
         {
             return;
         }

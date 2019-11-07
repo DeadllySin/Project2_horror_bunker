@@ -15,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     private float forceReleasePerSecond = 2.5f;
 
     private UIManager myUImanager;
+    private InputManager myInputManager;
 
     private RaycastHit hit;
     private Interactable interactable;
@@ -25,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         myUImanager = GameObject.FindObjectOfType<UIManager>();
+        myInputManager = GameObject.FindObjectOfType<InputManager>();
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class PlayerInteraction : MonoBehaviour
             FindInteractables();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && hasHit && interactable != null)
+        if (Input.GetMouseButtonDown(0) && hasHit && interactable != null && myInputManager.PlayerCanMove() == true)
         {
             if (interactable.NeedsForce == false)
             {
@@ -44,6 +46,10 @@ public class PlayerInteraction : MonoBehaviour
             {
                 BuildUpForce();
             }
+        }
+        else
+        {
+            // Play interaction fail sound?
         }
 
         if (forceBuildUp)
@@ -70,11 +76,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             interactable = hit.collider.gameObject.GetComponent<Interactable>();
             myUImanager.CrosshairInteract(true);
+            // TODO: Set UI Tooltip
         }
         else
         {
             interactable = null;
             myUImanager.CrosshairInteract(false);
+            // TODO: Clear UI Tooltip
         }
     }
 
