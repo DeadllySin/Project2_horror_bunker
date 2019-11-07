@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="Workspace" id="{6dfb6bf1-887c-45c8-8964-fe09b8667c61}">
 		<property name="builtBanksOutputDirectory">
-			<value>../GitHub/Project2_horror_bunker/FMOD Builds</value>
+			<value>../FMOD Builds</value>
 		</property>
 		<relationship name="masterEventFolder">
 			<destination>{7e817afd-54a8-4a62-a957-6927c1800dac}</destination>
