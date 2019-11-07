@@ -67,6 +67,4 @@ Unity Horror Bunker Project/.vs/Unity Horror Bunker Project/v16/Server/sqlite3/s
 Unity Horror Bunker Project/fmod_editor.log
 
 # Remove this line, if FMOD plugin is updated or FMOD settings are changed. Every user must set the build path again
-Unity Horror Bunker Project/Assets/Plugins/FMOD
-Unity Horror Bunker Project/Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
-Unity Horror Bunker Project/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset
+Unity Horror Bunker Project/Assets/Plugins/FMOD/
