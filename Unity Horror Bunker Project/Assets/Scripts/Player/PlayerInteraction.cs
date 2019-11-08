@@ -6,7 +6,7 @@ public class PlayerInteraction : MonoBehaviour
     private LayerMask layerMask = 1;
 
     [SerializeField]
-    private float interactionDistance = 2.5f;
+    private float interactionDistance = 3.2f;
 
     [SerializeField]
     private float forceAddPerInteraction = 0.2f;
