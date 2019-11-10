@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
@@ -6,7 +7,8 @@ public class Interactable : MonoBehaviour
     {
         Item,
         Note,
-        Interaction
+        Interaction,
+        SendValue
     }
     
     [SerializeField]
@@ -23,6 +25,9 @@ public class Interactable : MonoBehaviour
 
     [SerializeField]
     public Interaction interaction = null;
+
+    [SerializeField]
+    public string valueToSend = null;
 
     [SerializeField]
     private InteractionTarget target = null;
@@ -89,10 +94,11 @@ public class Interactable : MonoBehaviour
                 }
 
                 ManageInventory();
-
                 InteractWithTarget();
-
                 DoReplacements();
+                break;
+            case InteractionType.SendValue:
+                target.Interact(Interaction.InteractionType.Default, valueToSend);
                 break;
         }
     }
@@ -114,11 +120,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void InteractWithTarget()
+    private void InteractWithTarget(string value = null)
     {
         if (target != null)
         {
-            interaction.Interact(target);
+            interaction.Interact(target, value);
             currentCooldown = interactionCooldown;
 
             if (interaction.RemoveTargetFromWorld)

@@ -18,7 +18,7 @@ public class DoorInteractionTarget : InteractionTarget
     [SerializeField]
     private Animator animator = null;
 
-    public override void Interact(Interaction.InteractionType interactionType)
+    public override void Interact(Interaction.InteractionType interactionType, string value = null)
     {
         switch (interactionType)
         {
