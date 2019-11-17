@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using MyBox;
 
 public class Interactable : MonoBehaviour
 {
@@ -17,28 +18,28 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private InteractionType interactionType = InteractionType.Item;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Item)]
     private Item giveItem = null;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Note)]
     private Note openNote = null;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
     public Interaction interaction = null;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.SendValue)]
     public string valueToSend = null;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
     private InteractionTarget target = null;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
     private bool needsForce = false;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("needsForce")]
     private float needsForceAmount = 3.0f;
 
-    [SerializeField]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
     private float interactionCooldown = 0.0f;
 
     private InventoryManager inventoryManager;
@@ -84,12 +85,14 @@ public class Interactable : MonoBehaviour
                 {
                     notesManager.AddNote(openNote);
                 }
+                
+                // TODO: Instead of opening the note directly, display a hint on the UI to press ## to read the note? (store last picked note in GameManager)
                 notesManager.ShowNote(openNote);
                 break;
             case InteractionType.Interaction:
                 if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
                 {
-                    // Play interaction fail sound?
+                    // TODO: Play interaction fail sound?
                     return;
                 }
 
