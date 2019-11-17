@@ -36,15 +36,19 @@ public class PlayerInteraction : MonoBehaviour
             FindInteractables();
         }
 
-        if (Input.GetMouseButtonDown(0) && hasHit && interactable != null && myInputManager.PlayerCanMove() == true)
+        // TODO: Make the key (E) customizable in the Input Manager
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
-            if (interactable.NeedsForce == false)
+            if (hasHit && interactable != null && myInputManager.PlayerCanMove() == true)
             {
-                interactable.Interact();
-            }
-            else
-            {
-                BuildUpForce();
+                if (!interactable.NeedsForce)
+                {
+                    interactable.Interact();
+                }
+                else
+                {
+                    BuildUpForce();
+                }
             }
         }
         else

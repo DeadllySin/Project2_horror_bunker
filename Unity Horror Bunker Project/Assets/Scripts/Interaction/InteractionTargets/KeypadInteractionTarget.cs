@@ -6,7 +6,7 @@ using TMPro;
 public class KeypadInteractionTarget : InteractionTarget
 {
     [SerializeField]
-    private InteractionTarget target = null;
+    private InteractionTarget targetDoor = null;
 
     [SerializeField]
     private bool locked = true;
@@ -26,7 +26,7 @@ public class KeypadInteractionTarget : InteractionTarget
     [SerializeField]
     private TextMeshPro keypadText = null;
 
-    public string userInput;
+    private string userInput;
 
     
     public override void Interact(Interaction.InteractionType interactionType, string value = null)
@@ -96,7 +96,7 @@ public class KeypadInteractionTarget : InteractionTarget
     {
         if (!locked)
         {
-            target.Interact(Interaction.InteractionType.Open);
+            targetDoor.Interact(Interaction.InteractionType.Open);
             if (autoLock)
             {
                 StartCoroutine("AutoLock", autoLockDelay);
