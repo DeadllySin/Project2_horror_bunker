@@ -192,7 +192,7 @@ MonoBehaviour:
   useHeadbob: 1
   head: {fileID: 6173018429557072641}
   headbobFrequency: 1.7
-  headbobSwayAngle: 4
+  headbobSwayAngle: 3
   headbobHeight: 2
   headbobSideMovement: 0.3
   useJumdLandMovement: 0

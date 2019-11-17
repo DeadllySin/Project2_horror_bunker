@@ -12,7 +12,7 @@ public class Interaction : ScriptableObject
         Put,
         TurnOff,
         TurnOn,
-        Unlock
+        Unlock,
     }
 
     [SerializeField]
@@ -55,8 +55,8 @@ public class Interaction : ScriptableObject
     public string ReplaceTargetByName { get => replaceTargetByName; set => replaceTargetByName = value; }
     public bool NewInteractioNeedsForce { get => newInteractionNeedsForce; set => newInteractionNeedsForce = value; }
 
-    public virtual void Interact(InteractionTarget target)
+    public virtual void Interact(InteractionTarget target, string value = null)
     {
-        target.Interact(interactionType);
+        target.Interact(interactionType, value);
     }
 }
