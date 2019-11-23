@@ -18,40 +18,15 @@ public class DoorInteractionTarget : InteractionTarget
     [SerializeField]
     private Animator animator = null;
 
-    public override void Interact(Interaction.InteractionType interactionType, string value = null)
+    public override void Default()
     {
-        switch (interactionType)
+        if (open)
         {
-            case Interaction.InteractionType.Default:
-                if (open)
-                {
-                    Close();
-                }
-                else
-                {
-                    Open();
-                }
-                break;
-
-            case Interaction.InteractionType.Open:
-                Open();
-                break;
-
-            case Interaction.InteractionType.Close:
-                Close();
-                break;
-
-            case Interaction.InteractionType.Lock:
-                Lock();
-                break;
-
-            case Interaction.InteractionType.Unlock:
-                Unlock();
-                break;
-
-            default:
-                Debug.Log("Confused door named: " + this.gameObject.ToString());
-                break;
+            Close();
+        }
+        else
+        {
+            Open();
         }
     }
 
@@ -67,6 +42,12 @@ public class DoorInteractionTarget : InteractionTarget
 
     public void Open()
     {
+        if (locked)
+        {
+            // TODO: Play locked door sound
+            return;
+        }
+
         open = true;
         animator.SetBool("open", open);
         if (autoClose)
@@ -100,8 +81,7 @@ public class DoorInteractionTarget : InteractionTarget
 
     private IEnumerator AutoClose()
     {
-        // TODO: Stop Coroutine when players closes the door manually.
-        yield return new WaitForSeconds(autoCloseDelay);
+         yield return new WaitForSeconds(autoCloseDelay);
         Close();
     }
 }

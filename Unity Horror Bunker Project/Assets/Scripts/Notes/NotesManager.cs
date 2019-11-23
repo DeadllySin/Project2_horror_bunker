@@ -1,30 +1,34 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NotesManager : MonoBehaviour
+public static class NotesManager
 {
-    [SerializeField]
-    private UIManager myUIManager = null;
-    
-    public List<Note> Diary;
+    public static List<Note> Diary;
 
-    public void AddNote(Note note)
+    public static void Initialize()
     {
-        Diary.Add(note);
+        Diary = new List<Note>();
     }
 
-    public void RemoveNote(Note note)
+    public static void AddNote(Note note)
+    {
+        Diary.Add(note);
+        // TODO: show a tooltip "Press J to read note" or something like that
+    }
+
+    public static void RemoveNote(Note note)
     {
         Diary.Remove(note);
     }
 
-    public bool HasItem(Note note)
+    public static bool HasItem(Note note)
     {
         return Diary.Contains(note);
     }
 
-    public void ShowNote(Note note)
+    public static void ShowNote(Note note)
     {
-        myUIManager.ShowNote(note);
+        // TODO: Show a note UI with note preselected
+        UIManager.ShowNote(note);
     }
 }

@@ -1241,7 +1241,6 @@ public static class vp_LocalPlayer
 			return;
 
 		m_CrosshairBackup = CrosshairTexture;
-		Debug.Log(CrosshairTexture);
 
 		CrosshairTexture = m_InvisibleTexture;
 

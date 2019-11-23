@@ -1,22 +1,29 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public static class InventoryManager
 {
-    public List<Item> Inventory;
+    public static List<Item> Inventory;
 
-    public void AddItem(Item item)
+    public static void Initialize()
+    {
+        Inventory = new List<Item>();
+    }
+
+    public static void AddItem(Item item)
     {
         Inventory.Add(item);
     }
 
-    public void RemoveItem(Item item)
+    public static void RemoveItem(Item item)
     {
         Inventory.Remove(item);
     }
 
-    public bool HasItem(Item item)
+    public static bool HasItem(Item item)
     {
+        // TODO: also check if the item is currently selected
+        
         return Inventory.Contains(item);
     }
 }

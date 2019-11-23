@@ -3,60 +3,27 @@
 [CreateAssetMenu(fileName = "New Interaction", menuName = "Interaction")]
 public class Interaction : ScriptableObject
 {
-    public enum InteractionType
-    {
-        Default,
-        Close,
-        Lock,
-        Open,
-        Put,
-        TurnOff,
-        TurnOn,
-        Unlock,
-    }
+    public string InteractionMethod = "Default";
 
-    [SerializeField]
-    private InteractionType interactionType = default;
+    public string InteractionValue = null;
 
-    [SerializeField]
-    private string interactionText = null;
+    public Item NeedItem = null;
 
-    [SerializeField]
-    private Item needsItem = null;
+    public Item GiveItem = null;
 
-    [SerializeField]
-    private Item giveItem = null;
+    public Note GiveNote = null;
 
-    [SerializeField]
-    private bool removeNeededItem = false;
+    public bool RemoveNeededItem = false;
 
-    [SerializeField]
-    private Interaction replaceInteraction = null;
+    public Interaction ReplaceInteraction = null;
 
-    [SerializeField]
-    private string replaceTargetByName = null;
+    public GameObject ReplaceTarget = null;
 
-    [SerializeField]
-    private bool newInteractionNeedsForce;
+    public bool NewInteractionNeedsForce;
 
-    [SerializeField]
-    private bool removeTargetFromWorld;
+    public bool RemoveTargetFromWorld;
 
     // Description is used to describe the interaction in the Unity-editor, if needed. It is not used anywhere else.
     [TextArea(15, 15)]
     public string Description;
-
-    public string InteractionText { get => interactionText; set => interactionText = value; }
-    public Item NeedItem { get => needsItem; set => needsItem = value; }
-    public bool RemoveNeededItem { get => removeNeededItem; set => removeNeededItem = value; }
-    public Item GiveItem { get => giveItem; set => giveItem = value; }
-    public bool RemoveTargetFromWorld { get => removeTargetFromWorld; set => removeTargetFromWorld = value; }
-    public Interaction ReplaceInteraction { get => replaceInteraction; set => replaceInteraction = value; }
-    public string ReplaceTargetByName { get => replaceTargetByName; set => replaceTargetByName = value; }
-    public bool NewInteractioNeedsForce { get => newInteractionNeedsForce; set => newInteractionNeedsForce = value; }
-
-    public virtual void Interact(InteractionTarget target, string value = null)
-    {
-        target.Interact(interactionType, value);
-    }
 }
