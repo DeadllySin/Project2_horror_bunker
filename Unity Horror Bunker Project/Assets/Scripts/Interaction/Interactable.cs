@@ -2,14 +2,14 @@
 using UnityEngine;
 using MyBox;
 
-public class Interactable : MonoBehaviour
+public class Interactable : vp_Interactable
 {
     private enum InteractionType
     {
         Item,
         Note,
-        Interaction,
-        SendValue
+        Button,
+        Complex
     }
     
     [SerializeField]
@@ -24,44 +24,53 @@ public class Interactable : MonoBehaviour
     [SerializeField, ConditionalField("interactionType", false, InteractionType.Note)]
     private Note openNote = null;
 
-    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Button, InteractionType.Complex)]
+    private GameObject target = null;
+
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Complex)]
     public Interaction interaction = null;
 
-    [SerializeField, ConditionalField("interactionType", false, InteractionType.SendValue)]
-    public string valueToSend = null;
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Button)]
+    public string targetMethod = "Default";
 
-    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
-    private InteractionTarget target = null;
-
-    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Button)]
+    public string targetValue = null;
+    
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Button, InteractionType.Complex)]
     private bool needsForce = false;
 
     [SerializeField, ConditionalField("needsForce")]
     private float needsForceAmount = 3.0f;
 
-    [SerializeField, ConditionalField("interactionType", false, InteractionType.Interaction)]
+    [SerializeField, ConditionalField("needsForce")]
+    private float forceAddPerInteraction = 0.2f;
+
+    [SerializeField, ConditionalField("needsForce")]
+    private float forceReleasePerSecond = 2.5f;
+
+    [SerializeField, ConditionalField("interactionType", false, InteractionType.Button, InteractionType.Complex)]
     private float interactionCooldown = 0.0f;
 
-    private InventoryManager inventoryManager;
-    private NotesManager notesManager;
+    private bool forceBuildUp = false;
+    public float currentForce = 0;
     private float currentCooldown = 0.0f;
-
+    
     public bool NeedsForce { get => needsForce;}
     public float NeedsForceAmount { get => needsForceAmount;}
     public string ToolTipText { get => toolTipText;}
 
-    public void Start()
+    protected override void Start()
     {
         // The target is used for special functionality (e.g. DoorInteractableTarget).
         // If no target is given, a target attached to the same object will be used.
         // If no target is present at all, target specific functionality will not be executed.
 
+        base.Start();
+
         if (target == null)
         {
-            target = GetComponent<InteractionTarget>();
+            target = this.transform.gameObject;
         }
-        inventoryManager = GameObject.Find("Inventory Manager").GetComponent<InventoryManager>();
-        notesManager = GameObject.Find("Notes Manager").GetComponent<NotesManager>();
     }
 
     public void Update()
@@ -70,51 +79,66 @@ public class Interactable : MonoBehaviour
         {
             currentCooldown -= interactionCooldown * Time.deltaTime;
         }
-    }
 
-    public void Interact()
-    {
-        switch (interactionType)
+        if (forceBuildUp)
         {
-            case InteractionType.Item:
-                inventoryManager.AddItem(giveItem);
-                Destroy(this.transform.gameObject);
-                break;
-            case InteractionType.Note:
-                if (!notesManager.HasItem(openNote))
-                {
-                    notesManager.AddNote(openNote);
-                }
-                
-                // TODO: Instead of opening the note directly, display a hint on the UI to press ## to read the note? (store last picked note in GameManager)
-                notesManager.ShowNote(openNote);
-                break;
-            case InteractionType.Interaction:
-                if (currentCooldown > 0 || interaction == null || (interaction.NeedItem != null && !inventoryManager.HasItem(interaction.NeedItem)))
-                {
-                    // TODO: Play interaction fail sound?
-                    return;
-                }
-
-                ManageInventory();
-                InteractWithTarget();
-                DoReplacements();
-                break;
-            case InteractionType.SendValue:
-                target.Interact(Interaction.InteractionType.Default, valueToSend);
-                break;
+            ReleaseForce();
         }
     }
 
+    public override bool TryInteract(vp_PlayerEventHandler player)
+    {
+        if (!BuildUpForce() || currentCooldown > 0)
+        {
+            return false;
+        }
+
+        switch (interactionType)
+        {
+            case InteractionType.Item:
+                InventoryManager.AddItem(giveItem);
+                Destroy(this.transform.gameObject);
+                break;
+            case InteractionType.Note:
+                if (!NotesManager.HasItem(openNote))
+                {
+                    NotesManager.AddNote(openNote);
+                }
+                // TODO: To be removed:
+                NotesManager.ShowNote(openNote);
+                break;
+            case InteractionType.Button:
+                if (string.IsNullOrEmpty(targetValue))
+                {
+                    target.SendMessage(targetMethod, SendMessageOptions.DontRequireReceiver);
+                }
+                else
+                {
+                    target.SendMessage(targetMethod, targetValue, SendMessageOptions.DontRequireReceiver);
+                }
+                break;
+            case InteractionType.Complex:
+                if (interaction == null || (interaction.NeedItem != null && !InventoryManager.HasItem(interaction.NeedItem)))
+                {
+                    return false;
+                }
+
+                ManageInventory();
+                ComplexInteract();
+                DoReplacements();
+                break;
+
+        }
+        currentCooldown = interactionCooldown;
+        return true;
+    }
     private void DoReplacements()
     {
-        needsForce = interaction.NewInteractioNeedsForce;
+        needsForce = interaction.NewInteractionNeedsForce;
 
-        // TODO: Find a better way to replace targets, since multiple GameObjects can be named the same.
-
-        if (!string.IsNullOrEmpty(interaction.ReplaceTargetByName))
+        if (interaction.ReplaceTarget != null)
         {
-            this.target = GameObject.Find(interaction.ReplaceTargetByName).GetComponent<InteractionTarget>();
+            this.target = interaction.ReplaceTarget;
         }
 
         if (interaction.ReplaceInteraction != null)
@@ -123,12 +147,18 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void InteractWithTarget(string value = null)
+    private void ComplexInteract()
     {
         if (target != null)
         {
-            interaction.Interact(target, value);
-            currentCooldown = interactionCooldown;
+            if (string.IsNullOrEmpty(interaction.InteractionValue))
+            {
+                target.SendMessage(interaction.InteractionMethod, SendMessageOptions.DontRequireReceiver);
+            }
+            else
+            {
+                target.SendMessage(interaction.InteractionMethod, targetValue, SendMessageOptions.DontRequireReceiver);
+            }
 
             if (interaction.RemoveTargetFromWorld)
             {
@@ -145,12 +175,48 @@ public class Interactable : MonoBehaviour
     {
         if (interaction.RemoveNeededItem && interaction.NeedItem != null)
         {
-            inventoryManager.RemoveItem(interaction.NeedItem);
+            InventoryManager.RemoveItem(interaction.NeedItem);
         }
 
         if (interaction.GiveItem != null)
         {
-            inventoryManager.AddItem(interaction.GiveItem);
+            InventoryManager.AddItem(interaction.GiveItem);
+        }
+
+        if (interaction.GiveNote != null)
+        {
+            NotesManager.AddNote(interaction.GiveNote);
+        }
+    }
+    private bool BuildUpForce()
+    {
+        if (!needsForce)
+        {
+            return true;
+        }
+        
+        forceBuildUp = true;
+        currentForce += forceAddPerInteraction;
+        if (currentForce >= needsForceAmount)
+        {
+            // interactable.TryInteract(this.gameObject);
+            currentForce = 0f;
+            forceBuildUp = false;
+            needsForce = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private void ReleaseForce()
+    {
+        currentForce -= forceReleasePerSecond * Time.deltaTime;
+        if (currentForce <= 0)
+        {
+            currentForce = 0f;
+            forceBuildUp = false;
         }
     }
 }

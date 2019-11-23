@@ -25,9 +25,9 @@ public class NoteUI : MonoBehaviour
         noteText.rectTransform.eulerAngles = new Vector3(0, 0, Random.Range(-1f, 1f));
         noteText.SetText(note.NoteText);
         noteText.ForceMeshUpdate();
-        currentPage = 1;
         pageCount = noteText.textInfo.pageCount;
-
+        
+        currentPage = 1;
         SetNavigationButtons();
     }
 
@@ -40,16 +40,23 @@ public class NoteUI : MonoBehaviour
     public void nextPage()
     {
         currentPage++;
-        noteText.pageToDisplay = currentPage;
-        noteText.ForceMeshUpdate();
-        SetNavigationButtons();
+        UpdatePage();
     }
+
     public void previousPage()
     {
         currentPage--;
+        UpdatePage();
+    }
+    private void UpdatePage()
+    {
         noteText.pageToDisplay = currentPage;
         noteText.ForceMeshUpdate();
         SetNavigationButtons();
     }
 
+    public void CloseNote()
+    {
+        UIManager.CloseNote();
+    }
 }

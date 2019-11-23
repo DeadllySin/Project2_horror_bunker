@@ -2,7 +2,6 @@
 
 public class DoorColorChanger : MonoBehaviour
 {
-    public GameObject door;
     private DoorInteractionTarget doorInteractionTarget;
     private Renderer myRenderer;
 

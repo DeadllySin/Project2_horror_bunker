@@ -19,7 +19,8 @@ public class vp_Switch : vp_Interactable
 {
 	
 	public GameObject Target = null;
-	public string TargetMessage = "";
+	public string TargetMethod = "";
+    public string TargetValue = "";
 	public AudioSource AudioSource = null;
 	public Vector2 SwitchPitchRange = new Vector2(1.0f, 1.5f);
 	public List<AudioClip> SwitchSounds = new List<AudioClip>();		// list of sounds to randomly play when switched
@@ -50,9 +51,16 @@ public class vp_Switch : vp_Interactable
 		
 		PlaySound();
 
-		Target.SendMessage(TargetMessage, SendMessageOptions.DontRequireReceiver);
-		
-		return true;
+        if (string.IsNullOrEmpty(TargetValue))
+        {
+            Target.SendMessage(TargetMethod, SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Target.SendMessage(TargetMethod, TargetValue, SendMessageOptions.DontRequireReceiver);
+        }
+
+        return true;
 		
 	}
 

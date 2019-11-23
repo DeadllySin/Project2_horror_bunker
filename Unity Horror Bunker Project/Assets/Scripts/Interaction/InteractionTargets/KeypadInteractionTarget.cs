@@ -6,7 +6,7 @@ using TMPro;
 public class KeypadInteractionTarget : InteractionTarget
 {
     [SerializeField]
-    private InteractionTarget targetDoor = null;
+    private GameObject targetDoor = null;
 
     [SerializeField]
     private bool locked = true;
@@ -29,13 +29,13 @@ public class KeypadInteractionTarget : InteractionTarget
     private string userInput;
 
     
-    public override void Interact(Interaction.InteractionType interactionType, string value = null)
+    public override void Default()
     {
-        if (locked && string.IsNullOrEmpty(value))
-        {
-            return;
-        }
+        return;
+    }
 
+    private void Receive(string value)
+    {
         switch (value)
         {
             case "enter":
@@ -49,23 +49,11 @@ public class KeypadInteractionTarget : InteractionTarget
 
     private void CheckInput(string value)
     {
-        if (!locked)
-        {
-            Open();
-            return;
-        }
-        
         StopCoroutine("ResetInput");
 
         userInput = userInput + value;
         keypadText.text = userInput;
-
-        if (userInput == accessCode)
-        {
-            locked = false;
-        }
-
-
+        locked = (userInput != accessCode);
 
         StartCoroutine("ResetInput", inputResetTime);
     }
@@ -73,14 +61,7 @@ public class KeypadInteractionTarget : InteractionTarget
     private IEnumerator ResetInput(float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (locked)
-        {
-            keypadText.text = "LOCKED";
-        }
-        else
-        {
-            keypadText.text = "UNLOCKED";
-        }
+        keypadText.text = locked ? "LOCKED" : "UNLOCKED";
         userInput = null;
     }
 
@@ -89,6 +70,7 @@ public class KeypadInteractionTarget : InteractionTarget
         yield return new WaitForSeconds(delay);
         userInput = null;
         locked = true;
+
         keypadText.text = "LOCKED";
     }
 
@@ -96,7 +78,7 @@ public class KeypadInteractionTarget : InteractionTarget
     {
         if (!locked)
         {
-            targetDoor.Interact(Interaction.InteractionType.Open);
+            targetDoor.SendMessage("Open", SendMessageOptions.DontRequireReceiver);
             if (autoLock)
             {
                 StartCoroutine("AutoLock", autoLockDelay);

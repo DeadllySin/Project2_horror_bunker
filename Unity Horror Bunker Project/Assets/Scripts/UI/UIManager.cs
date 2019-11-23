@@ -3,53 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public static class UIManager
 {
-    [SerializeField]
-    private Image crosshair = null;
+    private static GameObject UIBase = null;
+    private static NoteUI noteUI = null;
     
-    [SerializeField]
-    private Image crosshairInteract = null;
-
-    [SerializeField]
-    private NoteUI noteUI = null;
-
-    private InputManager myInputManager = null;
-        
-    // Start is called before the first frame update
-    void Start()
+    public static void Initialize()
     {
-        CrossHair(true);
+        // Activate all children, so that their components can be found
+
+        UIBase = GameObject.FindGameObjectWithTag("UIBase");
+        for (int i = 0; i < UIBase.transform.childCount; i++)
+        {
+            UIBase.transform.GetChild(i).gameObject.SetActive(true);
+        }
+
+        // Register UI components
+        noteUI = UIBase.GetComponentInChildren<NoteUI>();
+        if (noteUI == null)
+        {
+            Debug.Log("Can´t finde NoteUI!");
+        }
         noteUI.gameObject.SetActive(false);
-        myInputManager = GameObject.FindObjectOfType<InputManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void ShowNote(Note note)
     {
-        
-    }
-
-    public void CrossHair(bool showCrosshair)
-    {
-        crosshair.enabled = showCrosshair;
-    }
-
-    public void CrosshairInteract(bool interactCrosshair)
-    {
-        crosshairInteract.enabled = interactCrosshair;
-    }
-
-    public void ShowNote(Note note)
-    {
-        myInputManager.StopPlayerMovement();
+        vp_LocalPlayer.HideCrosshair();
+        vp_LocalPlayer.DisableGameplayInput();
+        vp_LocalPlayer.DisableFreeLook();
+        vp_LocalPlayer.ShowMouseCursor();
         noteUI.gameObject.SetActive(true);
         noteUI.ShowNote(note);
     }
 
-    public void CloseNote()
+    public static void CloseNote()
     {
         noteUI.gameObject.SetActive(false);
-        myInputManager.StartPlayerMovement();
+        vp_LocalPlayer.ShowCrosshair();
+        vp_LocalPlayer.EnableGameplayInput();
+        vp_LocalPlayer.EnableFreeLook();
+        vp_LocalPlayer.HideMouseCursor();
     }
 }
