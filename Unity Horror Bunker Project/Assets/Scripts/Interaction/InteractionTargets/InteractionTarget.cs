@@ -2,5 +2,5 @@
 
 public abstract class InteractionTarget : MonoBehaviour
 {
-    public abstract void Default();
+    public abstract void Interact(params object[] values);
 }

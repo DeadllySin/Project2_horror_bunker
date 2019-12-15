@@ -18,7 +18,9 @@ public class DoorInteractionTarget : InteractionTarget
     [SerializeField]
     private Animator animator = null;
 
-    public override void Default()
+
+
+    public override void Interact(params object[] values)
     {
         if (open)
         {
@@ -81,7 +83,8 @@ public class DoorInteractionTarget : InteractionTarget
 
     private IEnumerator AutoClose()
     {
-         yield return new WaitForSeconds(autoCloseDelay);
+        yield return new WaitForSeconds(autoCloseDelay);
         Close();
     }
+
 }

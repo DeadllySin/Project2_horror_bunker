@@ -23,7 +23,7 @@ public static class InventoryManager
     public static bool HasItem(Item item)
     {
         // TODO: also check if the item is currently selected
-        
+
         return Inventory.Contains(item);
     }
 }
