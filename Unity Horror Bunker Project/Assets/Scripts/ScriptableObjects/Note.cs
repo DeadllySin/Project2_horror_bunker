@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Collectibles/Note")]
 
-public class Note : ScriptableObject
+public class Note : InteractableItem
 {
     public enum NoteTypes
     {

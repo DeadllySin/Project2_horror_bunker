@@ -13,18 +13,21 @@ public static class UIManager
         // Activate all children, so that their components can be found
 
         UIBase = GameObject.FindGameObjectWithTag("UIBase");
-        for (int i = 0; i < UIBase.transform.childCount; i++)
-        {
-            UIBase.transform.GetChild(i).gameObject.SetActive(true);
+        if (UIBase != null) {
+            for (int i = 0; i < UIBase.transform.childCount; i++)
+            {
+                UIBase.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            // Register UI components
+            noteUI = UIBase.GetComponentInChildren<NoteUI>();
+            if (noteUI == null)
+            {
+                Debug.Log("Can´t finde NoteUI!");
+            }
+            noteUI.gameObject.SetActive(false);
         }
 
-        // Register UI components
-        noteUI = UIBase.GetComponentInChildren<NoteUI>();
-        if (noteUI == null)
-        {
-            Debug.Log("Can´t finde NoteUI!");
-        }
-        noteUI.gameObject.SetActive(false);
     }
 
     public static void ShowNote(Note note)

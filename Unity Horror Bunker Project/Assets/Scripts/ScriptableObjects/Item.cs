@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Collectibles/Item")]
-public class Item : ScriptableObject
+public class Item : InteractableItem
 {
     public enum ItemType
     {
@@ -20,6 +20,4 @@ public class Item : ScriptableObject
 
     public GameObject PlayerHoldingPrefab;
 
-    [TextArea(5, 15)]
-    public string Description;
 }

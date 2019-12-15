@@ -1,29 +1,70 @@
-﻿using UnityEngine;
+﻿
+using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Interaction", menuName = "Interaction")]
 public class Interaction : ScriptableObject
 {
-    public string InteractionMethod = "Default";
 
-    public string InteractionValue = null;
+    private object[] interactionValues;
 
-    public Item NeedItem = null;
+    [Space(10)]
 
-    public Item GiveItem = null;
+    [Header("Values")]
 
-    public Note GiveNote = null;
+    [SerializeField]
+    private float[] numberValues = null;
+    [SerializeField]
+    private string[] stringValues = null;
+    [SerializeField]
+    private bool[] boolValues = null;
 
-    public bool RemoveNeededItem = false;
+    [Space(10)]
 
-    public Interaction ReplaceInteraction = null;
+    [Header("Item")]
 
-    public GameObject ReplaceTarget = null;
+    public InteractableItem[] neededItems = null;
+    public InteractableItem[] recievedItems = null;
+    public InteractableItem[] removedItems = null;
 
-    public bool NewInteractionNeedsForce;
+    [Space(10)]
 
-    public bool RemoveTargetFromWorld;
+    [Header("Target")]
 
-    // Description is used to describe the interaction in the Unity-editor, if needed. It is not used anywhere else.
+    public bool removeTarget = false;
+    public GameObject replaceTarget = null;
+
+    [Space(10)]
+
     [TextArea(15, 15)]
-    public string Description;
+    public string description;
+
+    public object[] GetInteractionValues() { return interactionValues; }
+
+    public void OnEnable()
+    {
+        int valueCount = numberValues.Length + stringValues.Length + boolValues.Length;
+        interactionValues = new object[valueCount];
+        int index = 0;
+
+        foreach (float item in numberValues)
+        {
+            interactionValues[index] = item;
+            index++;
+        }
+
+        foreach (string item in stringValues)
+        {
+            interactionValues[index] = item;
+            index++;
+        }
+
+        foreach (bool item in boolValues)
+        {
+            interactionValues[index] = item;
+            index++;
+        }
+
+    }
+
 }
