@@ -2,7 +2,8 @@
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Collectibles/Item")]
 public class Item : ScriptableObject
-{    public enum ItemType
+{
+    public enum ItemType
     {
         Key,
         Consumable,
@@ -12,7 +13,7 @@ public class Item : ScriptableObject
     public Sprite InventoryImage;
 
     public ItemType Itemtype;
-    
+
     public string ItemName;
 
     public GameObject WorldPrefab;

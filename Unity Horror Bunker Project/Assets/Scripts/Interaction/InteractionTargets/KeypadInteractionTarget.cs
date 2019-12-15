@@ -28,14 +28,10 @@ public class KeypadInteractionTarget : InteractionTarget
 
     private string userInput;
 
-    
-    public override void Default()
-    {
-        return;
-    }
 
-    private void Receive(string value)
+    public override void Interact(params object[] values)
     {
+        string value = (values[0] as string);
         switch (value)
         {
             case "enter":

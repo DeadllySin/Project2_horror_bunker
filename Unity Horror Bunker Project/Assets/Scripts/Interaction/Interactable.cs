@@ -11,7 +11,7 @@ public class Interactable : vp_Interactable
         Button,
         Complex
     }
-    
+
     [SerializeField]
     private string toolTipText = null;
 
@@ -35,7 +35,7 @@ public class Interactable : vp_Interactable
 
     [SerializeField, ConditionalField("interactionType", false, InteractionType.Button)]
     public string targetValue = null;
-    
+
     [SerializeField, ConditionalField("interactionType", false, InteractionType.Button, InteractionType.Complex)]
     private bool needsForce = false;
 
@@ -54,10 +54,10 @@ public class Interactable : vp_Interactable
     private bool forceBuildUp = false;
     public float currentForce = 0;
     private float currentCooldown = 0.0f;
-    
-    public bool NeedsForce { get => needsForce;}
-    public float NeedsForceAmount { get => needsForceAmount;}
-    public string ToolTipText { get => toolTipText;}
+
+    public bool NeedsForce { get => needsForce; }
+    public float NeedsForceAmount { get => needsForceAmount; }
+    public string ToolTipText { get => toolTipText; }
 
     protected override void Start()
     {
@@ -194,7 +194,7 @@ public class Interactable : vp_Interactable
         {
             return true;
         }
-        
+
         forceBuildUp = true;
         currentForce += forceAddPerInteraction;
         if (currentForce >= needsForceAmount)
